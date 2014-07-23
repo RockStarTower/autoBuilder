@@ -267,15 +267,14 @@ function wireframe1(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
-	}
 
+	// create slider folder if it doesn't exist
+	if (!file_exists($upload_dir['path'].'/slider')) {
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
+	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
 	echo "Logo uploaded. <br>";
@@ -293,8 +292,8 @@ function wireframe1(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -605,15 +604,14 @@ function wireframe2(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
-	}
 
+	// create slider folder if it doesn't exist
+	if (!file_exists($upload_dir['path'].'/slider')) {
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
+	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
 	update_option('deepfocus_logo', $upload_dir['url'].'/logo.png'); 
@@ -633,8 +631,8 @@ function wireframe2(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -645,7 +643,6 @@ function wireframe2(){
 		'name' => 'slider',
 		'settings' => array(
 			'style' => 'default',
-
 			'width' => 'auto',
 			'height' => 350,
 			'autoplay' => 1,
@@ -941,15 +938,15 @@ function wireframe3(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
-	}
 
+
+	// create slider folder if it doesn't exist
+	if (!file_exists($upload_dir['path'].'/slider')) {
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
+	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
 	echo "Logo uploaded. <br>";
@@ -968,8 +965,8 @@ function wireframe3(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -1277,15 +1274,15 @@ function wireframe4(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
-	}
 
+
+	// create slider folder if it doesn't exist
+	if (!file_exists($upload_dir['path'].'/slider')) {
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
+	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
 	echo "Logo uploaded. <br>";
@@ -1303,8 +1300,8 @@ function wireframe4(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -1607,13 +1604,14 @@ function wireframe5(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -1632,8 +1630,8 @@ function wireframe5(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -1936,13 +1934,14 @@ function wireframe6(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -1961,8 +1960,8 @@ function wireframe6(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -2268,13 +2267,14 @@ function wireframe7(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -2295,8 +2295,8 @@ function wireframe7(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -2685,13 +2685,14 @@ function wireframe8(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -2710,8 +2711,8 @@ function wireframe8(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -3014,13 +3015,14 @@ function wireframe9(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -3040,8 +3042,8 @@ function wireframe9(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -3344,13 +3346,14 @@ function wireframe10(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -3369,8 +3372,8 @@ function wireframe10(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -3673,13 +3676,14 @@ function wireframe11(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -3698,8 +3702,8 @@ function wireframe11(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -3919,7 +3923,7 @@ function wireframe11(){
 	$privacy_page = array(
 				'post_type'   => 'page',
 				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
-				'post_name'  => stripslashes($main_data['content']['privacy']['title']),
+				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
 				'post_status' => 'publish',
 				'post_content' => stripslashes($main_data['content']['privacy']['content']),
 				'post_author' => 1,
@@ -4002,13 +4006,14 @@ function wireframe12(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -4028,8 +4033,8 @@ function wireframe12(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -4346,13 +4351,14 @@ function wireframe13(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -4371,8 +4377,8 @@ function wireframe13(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -4647,13 +4653,14 @@ function wireframe14(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -4673,8 +4680,8 @@ function wireframe14(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -4977,13 +4984,14 @@ function wireframe15(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -5002,8 +5010,8 @@ function wireframe15(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -5310,13 +5318,13 @@ function wireframe16(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -5335,8 +5343,8 @@ function wireframe16(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -5628,13 +5636,14 @@ function wireframe17(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -5653,8 +5662,8 @@ function wireframe17(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -5857,166 +5866,501 @@ function wireframe17(){
 
 }	
 
-
 function wireframe18(){
-			$logo_data = base64_decode($logo_data);
-			$favicon_data = base64_decode($favicon_data);
-			$bg_data = base64_decode($bg_data);
 
-			$data = array('option_value' => $h1content);
-			$where = array('option_name' => 'woo_homepage_intro_message_heading');
-			$wpdb->update('wp_options', $data, $where);
+	$file = $_FILES['file']['tmp_name'];
+	$json_url = $file;
+	$json = file_get_contents($json_url);
+	$main_data = json_decode($json, TRUE);
+	
+	// AUTHOR NICKNAME
+	$author_nickname = ($main_data['author_nickname']);
+	$user_id = 1;
+	
+	// META DESCRIPTION
+	$meta_description = ($main_data['meta_description']);
+	
+	// TITLE TAG
+	$title_tag = ($main_data['title_tag']);
+	
+	// HOME
+	$home_title = 'Home';
+	$home_content = ($main_data['content']['homepage']['content']);
 
-			$data = array('option_value' => $hust_tagline);
-			$where = array('option_name' => 'woo_homepage_intro_message_content');
-			$wpdb->update('wp_options', $data, $where);
+	// ABOUT
+	$about_title = ($main_data['content']['about']['title']);
+	$about_nav = ($main_data['content']['about']['nav']);
+	$about_content = ($main_data['content']['about']['content']);
 
-			$data = array('option_value' => $page_titles[3]);
-			$where = array('option_name' => 'woo_homepage_intro_message_button_url');
-			$wpdb->update('wp_options', $data, $where);
+	// PAGE 1
+	$page1_title = ($main_data['content']['page1']['title']);
+	$page1_nav = ($main_data['content']['page1']['nav']);
+	$page1_content = ($main_data['content']['page1']['content']);
 
-			$data = array('option_value' => $wp_upload_dir['url'].'/background.jpg');
-			$where = array('option_name' => 'woo_homepage_intro_message_bg');
-			$wpdb->update('wp_options', $data, $where);
-			
-			file_put_contents($wp_upload_dir['path'].'/logo.png', $logo_data);
-			file_put_contents($wp_upload_dir['path'].'/favicon.ico', $favicon_data);
+	// PAGE 2
+	$page2_title = ($main_data['content']['page2']['title']);
+	$page2_nav = ($main_data['content']['page2']['nav']);
+	$page2_content = ($main_data['content']['page2']['content']);
 
-			//Decode and create images
-			$icon1 = base64_decode($icondata1);
-			$icon2 = base64_decode($icondata2);
-			$icon3 = base64_decode($icondata3);
-			file_put_contents($wp_upload_dir['path'].'/icon1.png', $icon1);
-			file_put_contents($wp_upload_dir['path'].'/icon2.png', $icon2);
-			file_put_contents($wp_upload_dir['path'].'/icon3.png', $icon3);
-			
-				// create slider folder if it doesn't exist
-			if (!file_exists($upload_dir['path'].'/slider')) {
-			mkdir($upload_dir['path'].'/slider', 0777, true);
-			if (!file_exists($upload_dir['path'].'/slider')) {
+	// PAGE 3
+	$page3_title = ($main_data['content']['page3']['title']);
+	$page3_nav = ($main_data['content']['page3']['nav']);
+	$page3_content = ($main_data['content']['page3']['content']);
+	
+	// BLOG
+	$blog_nav = ($main_data['content']['blog']['nav']);
+	$blog_template = ($main_data['content']['blog']['template']);
+	
+	$blog_nav = "blog";
+	$blog_template = "page-blog.php";
+	
+	// FAVICON
+	$favicon = base64_decode($main_data['favicon']);
+
+	// ICONS
+	$icon1 = base64_decode($main_data['icon1']);
+	$icon2 = base64_decode($main_data['icon2']);
+	$icon3 = base64_decode($main_data['icon3']);
+	
+	// LOGO
+	$logo = base64_decode($main_data['logo']);
+	
+	
+	// SLIDE IMAGES
+	$slider_1 = base64_decode($main_data['content']['page1']['slider_image']);
+	$slider_2 = base64_decode($main_data['content']['page2']['slider_image']);
+	$slider_3 = base64_decode($main_data['content']['page3']['slider_image']);
+	
+	// SLIDER CONTENT
+	$caption1 = ($main_data['content']['page1']['slider_content']);
+	$caption2 = ($main_data['content']['page2']['slider_content']);
+	$caption3 = ($main_data['content']['page3']['slider_content']);
+	
+
+	// AUTHOR NICKNAME
+	update_user_meta($user_id, "nickname", $author_nickname);
+	update_user_meta($user_id, "display_name", $author_nickname);
+	wp_update_user(array('ID' => $user_id, 'display_name' => $author_nickname));
+	echo "User nickname updated. <br>";
+
+
+	// HUSTLE HOMEPAGE OPTIONS
+
+	$hustle_options = array(
+   		//Enables intro message in theme settings
+   		'woo_homepage_enable_intro_message' => true,
+   		//Enables blog posts on home page
+   		'woo_homepage_enable_blog_posts' => true,
+   		//Sets homepage h1
+   		'woo_homepage_intro_message_heading' => $homepage_h1,
+   		//Sets content under h1
+   		'woo_homepage_intro_message_content' => $homepage_intro_message,
+   		//Sets link button text
+   		'woo_homepage_intro_message_button_label' => $homepage_btn_text,
+   		//Button links to about page
+   		'woo_homepage_intro_message_button_url' => $homepage_btn_url,
+   		//Sets top image on homepage
+   		'woo_homepage_intro_message_bg' => $homepage_image_url,
+   		//Sets title over blog posts on the homepage
+   		'woo_homepage_blog_area_title' => $blog_area_title,
+	);
+
+	//Loops through $hustle_options array and adds options if they aren't added, and updates them if they are
+		foreach ($hustle_options as $key => $val) {
+   			if (!add_option($key, $val)) {
+      				update_option($key, $val);
+   			} 
+   			else {
+      			 echo $key . " wasn't updated. <br>";
+   			}
+		}
+
+	//  I am not sure where the homepage content for everything is located in the $main_data array. So I just made a guess. 
+	for ($i = 0; $i < count($main_data['content']['homepage']['slides']['title']); $i++) {
+   
+   	//  Pulls page info from database for the page that the slide is linking too.
+  	 $page_obj = get_post($page_ids['page' . ($i + 1)]);
+   
+  	//  Creates url to the page that the slide is linking too
+   	$page_url = site_url('/' . $page_obj->post_name . '/');
+   
+   	//  Creates string of html for the slide content
+   	$post_html = '<h2>' . $main_data['content']['homepage']['slides']['title'][$i] . '</h2>' . 
+       $main_data['content']['homepage']['slides']['content'][$i] . '
+       <br>
+       [button link="' . $page_url . '" bg_color="#b324b3" border="#b53ab5"]Read More[/button]';
+   
+   	//  Create slide post array for slide post
+   	$slide_array = array(
+       'post_title'    => '',
+       'post_content'  => $post_html,
+       'post_status'   => 'publish',
+       'post_type'     => 'slide',
+       'post_author'   => 1,
+   	);
+   
+   	//  Create attachment array for slide image
+   	$attachment = array(
+       'guid'           => $wp_upload_dir['url'] . '/slide' . ($i +1 ) . '.jpg', 
+       'post_mime_type' => 'image/jpeg',
+       'post_title'     => 'slide' . ($i + 1),
+       'post_content'   => '',
+       'post_status'    => 'inherit'
+   	);
+   
+  	//  Insert slide post, and set post id to $slide_id variable
+   	$slide_id = wp_insert_post($slide_array);
+   
+   	//  Insert attachment for image
+   	$attachment_id = wp_insert_attachment( $attachment, $upload_dir['path'] . '/slide' . ($i +1 ) . '.jpg', $slide_id );
+   
+   	//  Include image.php for wp_generate_attachment_metadata
+   	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+   
+   	//  Create metadata for attachment
+   	$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+   
+   	//  Append height and width to $attach_data array
+   	$attach_data['height'] = 479;
+   	$attach_data['width'] = 262;
+   
+   	//  Update metadata for image attachment
+   	wp_update_attachment_metadata( $attach_id, $attach_data );
+   
+   	//  Uncomment to add alt text to images
+   	add_post_meta($post_id, '_wp_attachment_image_alt', $main_data['alttext']['slides'][$i], true);
+   
+   	//  Create feature post array
+   	$feature = array(
+       'post_title'    => $main_data['content']['homepage']['content']['title'][$i],
+       'post_content'  => $main_data['content']['homepage']['content']['content'][$i],
+       'post_status'   => 'publish',
+       'post_type'     => 'feature',
+       'post_author'   => 1,
+   	);
+   
+   	//  Insert feature post
+   	wp_insert_post($feature);
+
+	}
+
+	
+	// IMAGES INSERT
+	$upload_dir = wp_upload_dir();
+
+
+	// create slider folder if it doesn't exist
+	if (!file_exists($upload_dir['path'].'/slider')) {
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
 			die('Failed to create directory');
-			}
-			}
+		}
+	}
+	
+	file_put_contents($upload_dir['path'].'/logo.png', $logo);
+	echo "Logo uploaded. <br>";
+	file_put_contents($upload_dir['path'].'/favicon.ico', $favicon);
+	echo "Favicon uploaded.  <br>";
+	file_put_contents($upload_dir['path'].'/slider1.jpg', $slider1);
+	echo "slider1 uploaded.  <br>";
+	file_put_contents($upload_dir['path'].'/slider2.jpg', $slider2);
+	echo "slider2 uploaded.  <br>";
+	file_put_contents($upload_dir['path'].'/slider3.jpg', $slider3);
+	echo "slider3 uploaded.  <br>";
+	file_put_contents($upload_dir['path'].'/background.jpg', $homepage_image_url);
+	echo "background image uploaded.  <br>";
+	file_put_contents($wp_upload_dir['path'].'/icon1.png', $icon1);
+	echo "icon1 uploaded. <br>";
+	file_put_contents($wp_upload_dir['path'].'/icon2.png', $icon2);
+	echo "icon2 uploaded. <br>";
+	file_put_contents($wp_upload_dir['path'].'/icon3.png', $icon3);
+	echo "icon3 uploaded. <br>";
 
-			$slide1 = base64_decode($hpimdata1);
-			$slide2 = base64_decode($hpimdata2);
-			$slide3 = base64_decode($hpimdata3);
-			file_put_contents($wp_upload_dir['path'].'/slider1.jpg', $slide1);
-			file_put_contents($wp_upload_dir['path'].'/slider2.jpg', $slide2);
-			file_put_contents($wp_upload_dir['path'].'/slider3.jpg', $slide3);
+	update_option('woo_custom_favicon', $upload_dir['url'].'/favicon.ico');
+	echo "Favicon uploaded.  <br>";
 	
-			//Create Slides
-			$counter = 1;
-			$count = 1;
-			for ($i = 1; $i <= 3; $i++){
-				$slide_name = 'Slide'.$counter;
-				$slide_count = 'slide_title_'.$counter;
-				//$slide_page_id = 'slide_page_id_'.$counter;
-				foreach ($hustle_array[$slide_count] as $key => $val){
-					$slide_title = $key;
-					$slide_content = $val;
-				}
-				$$slide_name = array(
-			
-    			    'post_type'   => 'slide',
-    			    'post_title'  => stripslashes($slide_title),
-    			    'post_name'   => stripslashes($slide_title),
-    			    'post_status' => 'publish',
-    			    'post_content' => stripslashes($slide_content),
-    			    'post_author' => 1,
-    			    'post_parent' => ''
-    			);
 	
-    			$new_slide_id = wp_insert_post($$slide_name);
+	$image_count = sizeof($main_data['content']['homepage']['images']);
 	
-    			$path = $wp_upload_dir['url'].'/slider'.$counter.'.jpg';
+	for ($i = 0; $i < $image_count; $i++) {
 	
-    			$attachment = array(
+		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
+		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
+		
+	}
 	
-  					'guid' => $path, 
 	
-  					'post_mime_type' => 'image/jpeg',
+	/*
+	// WIDGETKIT CREATION
+	$widgetkit_settings = array(
+		'type' => 'gallery',
+		'id' => 0,
+		'name' => 'slider',
+		'settings' => array(
+			'style' => 'default',
+			'width' => 'auto',
+			'height' => 350,
+			'autoplay' => 1,
+			'order' => 'default',
+			'interval' => 5000,
+			'duration' => 500,
+			'index' => 0,
+			'navigation' => 1,
+			'buttons' => 1,
+			'slices' => 20,
+			'animated' => 'fade',
+			'caption_animation_duration' => 500,
+			'lightbox' => 0,
+		),
+		'style' => 'default',
+		'paths' => array(
+			'\/slider',
+		),
+		'captions' => array(
+			'\/slider\/slider1.jpg' => stripslashes($caption1),
+			'\/slider\/slider2.jpg' => stripslashes($caption2),
+			'\/slider\/slider3.jpg' => stripslashes($caption3),
+		),
+		'links' => array(
+			'\/slider\/slider1.jpg' => '',
+			'\/slider\/slider2.jpg' => '',
+			'\/slider\/slider3.jpg' => '',
+		),
+	);
 	
-  					'post_title' => 'slide'.$counter,
 	
-  					'post_content' => '',
+	$wk_content = json_encode($widgetkit_settings);
 	
-  					'post_status' => 'inherit'
-	
-  				);
-	
-  				$filename = $wp_upload_dir['path'].'/slider'.$counter.'.jpg';
-	
-  				$attach_id = wp_insert_attachment( $attachment, $filename, $new_slide_id );
-	
-  				// you must first include the image.php file
-	
-  				// for the function wp_generate_attachment_metadata() to work
-	
-  				require_once( ABSPATH . 'wp-admin/includes/image.php' );
-	
-  				$attach_data = wp_generate_attachment_metadata( $attach_id, $path );
-	
-  				wp_update_attachment_metadata( $attach_id, $attach_data );
-	
-  				set_post_thumbnail( $new_slide_id, $attach_id );
-  				$counter++;
-			}
-	
-			//Create Features
-			for ($i = 1; $i <= 3; $i++){
-				$feature_name = 'Feature'.$count;
-				$feature_count = 'feature_'.$count;
-				//$feature_page_id = 'feature_page_id_'.$count;
-				foreach ($hustle_array[$feature_count] as $key => $val){
-					$feature_title = $key;
-					$feature_content = $val;
-				}
-				$$feature_name = array(
-			
-    			    'post_type'   => 'feature',
-    			    'post_title'  => stripslashes($feature_title),
-    			    'post_name'   => stripslashes($feature_title),
-    			    'post_status' => 'publish',
-    			    'post_content' => stripslashes($feature_content),
-    			    'post_author' => 1,
-    			    'post_parent' => ''
-    			);
+	$create_widgetkit = array(
+	    'post_title'     => 'slider',
+		'post_status'    => 'publish', 
+		'post_content'   => ($wk_content), 		
+	    'post_type'      => 'widgetkit',
+		'post_excerpt'   => 'default',
+		'post_mime_type' => 'gallery',
+	    'comment_status' => 'closed' 
+	); 
 
-    			$new_feature_id = wp_insert_post($$feature_name);
-    			$path_f = $wp_upload_dir['url'].'/icon'.$counter.'.png';
+	$wk_id = wp_insert_post($create_widgetkit);
+	$home_content = str_replace("ab_slider_id", $wk_id, $home_content);
+	echo "Widgetkit created. <br>";
+	*/
+
+	$wp_insert = array(	
+		'home_page' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($home_content),
+				'post_author' => 1,
+				'post_parent' => '',
+				'page_template' => 'page-full.php'
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 1
+			),
+		),
+		'about_page' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($about_title),
+				'post_name'   => stripslashes($about_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($about_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($about_nav),
+				'post_name'   => stripslashes($about_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 2
+			),
+		),
+		'page1' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($page1_title),
+				'post_name'   => stripslashes($page1_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($page1_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($page1_nav),
+				'post_name'   => stripslashes($page1_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 3
+			),
+		),
+		'page2' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($page2_title),
+				'post_name'   => stripslashes($page2_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($page2_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($page2_nav),
+				'post_name'   => stripslashes($page2_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 4
+			),
+		),
+		'page3' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($page3_title),
+				'post_name'   => stripslashes($page3_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($page3_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($page3_nav),
+				'post_name'   => stripslashes($page3_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 5
+			),
+		),		
+		'blog' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($blog_nav),
+				'post_name'   => stripslashes($blog_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'post_parent' => '',
+				'page_template' => stripslashes($blog_template)
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($blog_nav),
+				'post_name'   => stripslashes($blog_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 6
+			),
+		),
+	);
+	/*
+	//INSERT HOMEPAGE FEATURES
+	$features_array = array(
+		'feature_1' => array(
+			'post_type'   => 'feature',
+			'post_title'  => stripslashes($main_data['content']['homepage']['title'][0]),
+			'post_name'   => stripslashes($main_data['content']['homepage']['title'][0]),
+			'post_status' => 'publish',
+			'post_content' => stripslashes($main_data['content']['homepage']['box'][0]),
+			'post_author' => 1,
+			'post_parent' => ''
+		),
+		'feature_2' => array(
+			'post_type'   => 'feature',
+			'post_title'  => stripslashes($main_data['content']['homepage']['title'][1]),
+			'post_name'   => stripslashes($main_data['content']['homepage']['title'][1]),
+			'post_status' => 'publish',
+			'post_content' => stripslashes($main_data['content']['homepage']['box'][1]),
+			'post_author' => 1,
+			'post_parent' => ''
+		),
+		'feature_3' => array(
+			'post_type'   => 'feature',
+			'post_title'  => stripslashes($main_data['content']['homepage']['title'][2]),
+			'post_name'   => stripslashes($main_data['content']['homepage']['title'][2]),
+			'post_status' => 'publish',
+			'post_content' => stripslashes($main_data['content']['homepage']['box'][2]),
+			'post_author' => 1,
+			'post_parent' => ''
+		),
+	);
+
+	for ($i = 1; $i < 4; $i++) {
+		${'feature' . $i . '_id'} = wp_insert_post($features_array['feature_' . $i]);
+	}
+	*/
+	// SET FAVICON
+	$favicon_maker = array(
+
+		'guid' => $upload_dir['url'].'/favicon.ico',
+		'post_mime_type' => 'image/x-icon',
+		'post_title' => 'favicon',
+		'post_content' => '',
+		'post_status' => 'inherit'
+		
+	);
 	
-    			$attachment = array(
+	$filename = $upload_dir['path'].'/favicon.ico';
+	wp_insert_attachment( $favicon_maker, $filename, '0' );
+	echo "Favicon image set in settings. <br>";
 	
-  					'guid' => $path_f, 
+	// INSERT PAGES
+	$page_ids = array();
+	foreach( $wp_insert as $page => $type ) {
+		$page_ids[$page]['page'] = wp_insert_post($type['page']);
+		$type['nav']['ID'] = $page_ids[$page]['page'] + 1;
+		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
+		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
+		echo $type['page']['post_title'] . ' was created. <br>';
+		echo $type['page']['nav'] . ' menu item updated. <br>';
+	}
+	/*
+	//ATTACH IMAGES TO FEATURES
+	for ($i = 0; $i < 3; $i++) {
+		$filename = 'image' . ($i + 1) . '.jpg';
+		$parent_post_id = ${'feature' . ($i + 1) . '_id'};
+		$wp_upload_dir = wp_upload_dir();
+		$attachment = array(			
+		    'guid'           => $wp_upload_dir['url'] . '/' . 'image' . ($i + 1) . '.jpg', 
+			'post_mime_type' => 'image/jpeg',
+			'post_title'     => 'image' . ($i + 1),
+			'post_content'   => '',
+			'post_status'    => 'inherit'
+		);
+		$attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
+		$attach_data = wp_generate_attachment_metadata( $attach_id, 'image' . ($i +1) . '.jpg' );
+		$attach_data['width'] = 250;
+		$attach_data['height'] = 250;
+		$attach_data['hwstring_small'] = 'height="250" width="250"'; 
+		wp_update_attachment_metadata( $attach_id, $attach_data );
+		set_post_thumbnail( $parent_post_id, $attach_id );
+	}
+	*/
+	// SET HOME PAGE
+	update_option('page_on_front', $page_ids['home_page']['page']);
+	update_option('show_on_front', 'page');
+	echo "Home page set as default <br>";
 	
-  					'post_mime_type' => 'image/jpeg',
+	// META DESCRIPTION
+	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	echo "Updated meta description. <br>";
 	
-  					'post_title' => 'slide'.$counter,
+	// SITE TITLE
+	update_option("blogname", $title_tag);
+	echo "Updated site title. <br>";
 	
-  					'post_content' => '',
-	
-  					'post_status' => 'inherit'
-	
-  				);
-	
-  				$filename = $wp_upload_dir['path'].'/icon'.$counter.'.png';
-	
-  				$attach_id = wp_insert_attachment( $attachment, $filename, $new_feature_id );
-	
-  				// you must first include the image.php file
-	
-  				// for the function wp_generate_attachment_metadata() to work
-	
-  				require_once( ABSPATH . 'wp-admin/includes/image.php' );
-	
-  				$attach_data = wp_generate_attachment_metadata( $attach_id, $path_f );
-	
-  				wp_update_attachment_metadata( $attach_id, $attach_data );
-	
-  				set_post_thumbnail( $new_feature_id, $attach_id );
-				$count++;	
-    		}
+	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
 }
 
@@ -6092,13 +6436,14 @@ function wireframe19(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -6117,8 +6462,8 @@ function wireframe19(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -6393,13 +6738,14 @@ function wireframe20(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -6419,8 +6765,8 @@ function wireframe20(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -6662,6 +7008,281 @@ function wireframe20(){
 
 }
 
+function wireframe21(){
+
+	$file = $_FILES['file']['tmp_name'];
+	$json_url = $file;
+	$json = file_get_contents($json_url);
+	$main_data = json_decode($json, TRUE);
+	
+	// AUTHOR NICKNAME
+	$author_nickname = ($main_data['author_nickname']);
+	$user_id = 1;
+	
+	// META DESCRIPTION
+	$meta_description = ($main_data['meta_description']);
+	
+	// TITLE TAG
+	$title_tag = ($main_data['title_tag']);
+	
+	// HOME
+	$home_title = 'Home';
+	$home_content = ($main_data['content']['homepage']['content']);
+
+	// ABOUT
+	$about_title = ($main_data['content']['about']['title']);
+	$about_nav = ($main_data['content']['about']['nav']);
+	$about_content = ($main_data['content']['about']['content']);
+
+	// PAGE 1
+	$page1_title = ($main_data['content']['page1']['title']);
+	$page1_nav = ($main_data['content']['page1']['nav']);
+	$page1_content = ($main_data['content']['page1']['content']);
+
+	// PAGE 2
+	$page2_title = ($main_data['content']['page2']['title']);
+	$page2_nav = ($main_data['content']['page2']['nav']);
+	$page2_content = ($main_data['content']['page2']['content']);
+
+	// PAGE 3
+	$page3_title = ($main_data['content']['page3']['title']);
+	$page3_nav = ($main_data['content']['page3']['nav']);
+	$page3_content = ($main_data['content']['page3']['content']);
+	
+	// BLOG
+	$blog_nav = ($main_data['content']['blog']['nav']);
+	$blog_template = ($main_data['content']['blog']['template']);
+	
+	$blog_nav = "blog";
+	$blog_template = "page-blog.php";
+	
+	// FAVICON
+	$favicon = base64_decode($main_data['favicon']);
+	
+	// LOGO
+	$logo = base64_decode($main_data['logo']);
+
+	//Get about page post id
+	$about_obj = get_post($page_ids['about']);
+
+	//Create slide html for post
+	$slide_html = $main_data['content']['homepage']['slides']['content'] .
+	'<br>[button link="' . site_url('/' . $about_obj->post_name . '/') . '"]Click here[/button]
+	<img src="' . $upload_dir['url'] . '/slide1.png" alt="" />';
+
+	//Create post array for wp_insert_post()
+	$slide = array(
+   		'post_title'    => $main_data['content']['homepage']['homepage_title'],
+   		'post_content'  => $slide_html,
+   		'post_status'   => 'publish',
+  	 	'post_author'   => 1,
+  		'post_type'     => 'slide',
+	);
+
+	//Insert slide post
+	wp_insert_post($slide);
+
+	//Loop 3 times to create 3 features, and attach their icons
+	for ($i = 0; $i < 3; $i++){
+   
+   //Create feature array for wp_insert_post
+   $feature =  array(
+       'post_title'    => $main_data['content']['homepage']['content']['title'][$i],
+       'post_content'  => $main_data['content']['homepage']['content']['content'][$i],
+       'post_status'   => 'publish',
+       'post_author'   => 1,
+       'post_type'     => 'feature',
+   );
+   
+   //Create attachment array to insert the feature's icon
+   $attachment = array(
+       'guid'           => $wp_upload_dir['url'] . '/icon' .  . ($i +1) . '.png', 
+       'post_mime_type' => 'image/png',
+       'post_title'     => 'icon' . ($i + 1),
+       'post_content'   => '',
+       'post_status'    => 'inherit'
+   );
+   
+   
+   //Insert feature post and set the post id to the $icon_id variable
+   $icon_id = wp_insert_post($feature);
+   
+   //Insert attachment for image and store the attachment id in the $attachment_id variable
+   $attachment_id = wp_insert_attachment( $attachment, $upload_dir['path'] . '/icon' . ($i +1) . '.png', $icon_id );
+   
+   //Include image.php for the wp_generate_attachment_metadata function
+   require_once( ABSPATH . 'wp-admin/includes/image.php' );
+   
+   //Create metadata for attachment
+   $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+   
+   //Append height and width to $attach_data array
+   $attach_data['height'] = 50;
+   $attach_data['width'] = 50;
+   
+   //Update metadata for image attachment
+   wp_update_attachment_metadata( $attach_id, $attach_data );
+
+}
+	$wp_insert = array(	
+		'home_page' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($home_content),
+				'post_author' => 1,
+				'post_parent' => '',
+				'page_template' => 'page-full.php'
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 1
+			),
+		),
+		'about_page' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($about_title),
+				'post_name'   => stripslashes($about_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($about_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($about_nav),
+				'post_name'   => stripslashes($about_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 2
+			),
+		),
+		'page1' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($page1_title),
+				'post_name'   => stripslashes($page1_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($page1_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($page1_nav),
+				'post_name'   => stripslashes($page1_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 3
+			),
+		),
+		'page2' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($page2_title),
+				'post_name'   => stripslashes($page2_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($page2_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($page2_nav),
+				'post_name'   => stripslashes($page2_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 4
+			),
+		),
+		'page3' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($page3_title),
+				'post_name'   => stripslashes($page3_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($page3_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($page3_nav),
+				'post_name'   => stripslashes($page3_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 5
+			),
+		),		
+		'blog' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($blog_nav),
+				'post_name'   => stripslashes($blog_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'post_parent' => '',
+				'page_template' => stripslashes($blog_template)
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($blog_nav),
+				'post_name'   => stripslashes($blog_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 6
+			),
+		),
+	);
+	
+	// SET FAVICON
+	$favicon_maker = array(
+
+		'guid' => $upload_dir['url'].'/favicon.ico',
+		'post_mime_type' => 'image/x-icon',
+		'post_title' => 'favicon',
+		'post_content' => '',
+		'post_status' => 'inherit'
+		
+	);
+	
+	$filename = $upload_dir['path'].'/favicon.ico';
+	wp_insert_attachment( $favicon_maker, $filename, '0' );
+	echo "Favicon image set in settings. <br>";
+	
+	// INSERT PAGES
+	$page_ids = array();
+	foreach( $wp_insert as $page => $type ) {
+		$page_ids[$page]['page'] = wp_insert_post($type['page']);
+		$type['nav']['ID'] = $page_ids[$page]['page'] + 1;
+		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
+		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
+		echo $type['page']['post_title'] . ' was created. <br>';
+		echo $type['page']['nav'] . ' menu item updated. <br>';
+	}
+	
+	// SET HOME PAGE
+	update_option('page_on_front', $page_ids['home_page']['page']);
+	update_option('show_on_front', 'page');
+	echo "Home page set as default <br>";
+	
+	// META DESCRIPTION
+	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	echo "Updated meta description. <br>";
+	
+	// SITE TITLE
+	update_option("blogname", $title_tag);
+	echo "Updated site title. <br>";
+	
+	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
+
 function wireframe22(){
 
 	$file = $_FILES['file']['tmp_name'];
@@ -6735,13 +7356,14 @@ function wireframe22(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -6760,8 +7382,8 @@ function wireframe22(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
-		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpeg', $image);
+		echo "image-" . ($i+1) . ".jpeg uploaded. <br>";
 		
 	}
 	
@@ -7145,12 +7767,12 @@ function wireframe23(){
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
 	
-		// create slider folder if it doesn't exist
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -7170,7 +7792,7 @@ function wireframe23(){
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
 		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -7427,8 +8049,6 @@ function wireframe23(){
   	//Update the sidebars_widgets option. The array is serialized automatically in the update_option function
   	update_option('sidebars_widgets', $sidebars_widgets);
 
-
-
 	// META DESCRIPTION
 	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
 	echo "Updated meta description. <br>";
@@ -7440,7 +8060,6 @@ function wireframe23(){
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
 }
-
 
 function wireframe24(){
 
@@ -7514,13 +8133,13 @@ function wireframe24(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -7539,8 +8158,8 @@ function wireframe24(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -7847,13 +8466,13 @@ function wireframe25(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -7873,7 +8492,7 @@ function wireframe25(){
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
 		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -8216,13 +8835,13 @@ function wireframe26(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -8241,8 +8860,8 @@ function wireframe26(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -8545,13 +9164,13 @@ function wireframe27(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -8571,8 +9190,8 @@ function wireframe27(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -8886,13 +9505,13 @@ function wireframe28(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -8911,8 +9530,8 @@ function wireframe28(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
-		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpeg', $image);
+		echo "image-" . ($i+1) . ".jpeg uploaded. <br>";
 		
 	}
 	
@@ -9206,13 +9825,13 @@ function wireframe29(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-	
-		// create slider folder if it doesn't exist
+
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -9232,7 +9851,7 @@ function wireframe29(){
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
 		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -9576,12 +10195,12 @@ function wireframe30(){
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
 	
-		// create slider folder if it doesn't exist
+	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
-	mkdir($upload_dir['path'].'/slider', 0777, true);
-	if (!file_exists($upload_dir['path'].'/slider')) {
-	die('Failed to create directory');
-	}
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
 	}
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
@@ -9600,8 +10219,8 @@ function wireframe30(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
-		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpeg', $image);
+		echo "image-" . ($i+1) . ".jpeg uploaded. <br>";
 		
 	}
 	

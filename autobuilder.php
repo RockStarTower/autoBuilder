@@ -5924,12 +5924,14 @@ function wireframe18(){
 	
 	// LOGO
 	$logo = base64_decode($main_data['logo']);
-	
+    
+    // HOMEPAGE BG
+	$homepage_image = base64_decode($main_data['content']['homepage']['background']);
 	
 	// SLIDE IMAGES
-	$slider_1 = base64_decode($main_data['content']['page1']['slider_image']);
-	$slider_2 = base64_decode($main_data['content']['page2']['slider_image']);
-	$slider_3 = base64_decode($main_data['content']['page3']['slider_image']);
+	$slider1 = base64_decode($main_data['content']['page1']['slider_image']);
+	$slider2 = base64_decode($main_data['content']['page2']['slider_image']);
+	$slider3 = base64_decode($main_data['content']['page3']['slider_image']);
 	
 	// SLIDER CONTENT
 	$caption1 = ($main_data['content']['page1']['slider_content']);
@@ -5944,108 +5946,7 @@ function wireframe18(){
 	echo "User nickname updated. <br>";
 
 
-	// HUSTLE HOMEPAGE OPTIONS
-
-	$hustle_options = array(
-   		//Enables intro message in theme settings
-   		'woo_homepage_enable_intro_message' => true,
-   		//Enables blog posts on home page
-   		'woo_homepage_enable_blog_posts' => true,
-   		//Sets homepage h1
-   		'woo_homepage_intro_message_heading' => $homepage_h1,
-   		//Sets content under h1
-   		'woo_homepage_intro_message_content' => $homepage_intro_message,
-   		//Sets link button text
-   		'woo_homepage_intro_message_button_label' => $homepage_btn_text,
-   		//Button links to about page
-   		'woo_homepage_intro_message_button_url' => $homepage_btn_url,
-   		//Sets top image on homepage
-   		'woo_homepage_intro_message_bg' => $homepage_image_url,
-   		//Sets title over blog posts on the homepage
-   		'woo_homepage_blog_area_title' => $blog_area_title,
-	);
-
-	//Loops through $hustle_options array and adds options if they aren't added, and updates them if they are
-		foreach ($hustle_options as $key => $val) {
-   			if (!add_option($key, $val)) {
-      				update_option($key, $val);
-   			} 
-   			else {
-      			 echo $key . " wasn't updated. <br>";
-   			}
-		}
-
-	//  I am not sure where the homepage content for everything is located in the $main_data array. So I just made a guess. 
-	for ($i = 0; $i < count($main_data['content']['homepage']['slides']['title']); $i++) {
-   
-   	//  Pulls page info from database for the page that the slide is linking too.
-  	 $page_obj = get_post($page_ids['page' . ($i + 1)]);
-   
-  	//  Creates url to the page that the slide is linking too
-   	$page_url = site_url('/' . $page_obj->post_name . '/');
-   
-   	//  Creates string of html for the slide content
-   	$post_html = '<h2>' . $main_data['content']['homepage']['slides']['title'][$i] . '</h2>' . 
-       $main_data['content']['homepage']['slides']['content'][$i] . '
-       <br>
-       [button link="' . $page_url . '" bg_color="#b324b3" border="#b53ab5"]Read More[/button]';
-   
-   	//  Create slide post array for slide post
-   	$slide_array = array(
-       'post_title'    => '',
-       'post_content'  => $post_html,
-       'post_status'   => 'publish',
-       'post_type'     => 'slide',
-       'post_author'   => 1,
-   	);
-   
-   	//  Create attachment array for slide image
-   	$attachment = array(
-       'guid'           => $wp_upload_dir['url'] . '/slide' . ($i +1 ) . '.jpg', 
-       'post_mime_type' => 'image/jpeg',
-       'post_title'     => 'slide' . ($i + 1),
-       'post_content'   => '',
-       'post_status'    => 'inherit'
-   	);
-   
-  	//  Insert slide post, and set post id to $slide_id variable
-   	$slide_id = wp_insert_post($slide_array);
-   
-   	//  Insert attachment for image
-   	$attachment_id = wp_insert_attachment( $attachment, $upload_dir['path'] . '/slide' . ($i +1 ) . '.jpg', $slide_id );
-   
-   	//  Include image.php for wp_generate_attachment_metadata
-   	require_once( ABSPATH . 'wp-admin/includes/image.php' );
-   
-   	//  Create metadata for attachment
-   	$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
-   
-   	//  Append height and width to $attach_data array
-   	$attach_data['height'] = 479;
-   	$attach_data['width'] = 262;
-   
-   	//  Update metadata for image attachment
-   	wp_update_attachment_metadata( $attach_id, $attach_data );
-   
-   	//  Uncomment to add alt text to images
-   	add_post_meta($post_id, '_wp_attachment_image_alt', $main_data['alttext']['slides'][$i], true);
-   
-   	//  Create feature post array
-   	$feature = array(
-       'post_title'    => $main_data['content']['homepage']['content']['title'][$i],
-       'post_content'  => $main_data['content']['homepage']['content']['content'][$i],
-       'post_status'   => 'publish',
-       'post_type'     => 'feature',
-       'post_author'   => 1,
-   	);
-   
-   	//  Insert feature post
-   	wp_insert_post($feature);
-
-	}
-
-	
-	// IMAGES INSERT
+    // IMAGES INSERT
 	$upload_dir = wp_upload_dir();
 
 
@@ -6067,7 +5968,7 @@ function wireframe18(){
 	echo "slider2 uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/slider3.jpg', $slider3);
 	echo "slider3 uploaded.  <br>";
-	file_put_contents($upload_dir['path'].'/background.jpg', $homepage_image_url);
+	file_put_contents($upload_dir['path'].'/background.jpg', $homepage_image);
 	echo "background image uploaded.  <br>";
 	file_put_contents($wp_upload_dir['path'].'/icon1.png', $icon1);
 	echo "icon1 uploaded. <br>";
@@ -6085,8 +5986,8 @@ function wireframe18(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
-		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/icon' . ($i + 1) . '.png', $image);
+		echo "icon" . ($i+1) . ".png uploaded. <br>";
 		
 	}
 	
@@ -6325,6 +6226,27 @@ function wireframe18(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
+    
+    $privacy_policy = array(
+        'post_type'   => 'page',
+        'post_title'  => stripslashes($main_data['content']['privacy']['title']),
+        'post_name'   => stripslashes($main_data['content']['privacy']['title']),
+        'post_status' => 'publish',
+        'post_content' => stripslashes($main_data['content']['privacy']['content']),
+        'post_author' => 1,
+        'post_parent' => ''
+    );
+    
+    $page_ids['privacy']['page'] = wp_insert_post($privacy_policy);
+    
+    $privacy_obj = get_post($page_ids['privacy']['page']);
+    
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    
+    if (!add_option('privacy_url', $privacy_url)) {
+        update_option('privacy_url', $privacy_url);
+    }
+    
 	/*
 	//ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {
@@ -6347,11 +6269,151 @@ function wireframe18(){
 		set_post_thumbnail( $parent_post_id, $attach_id );
 	}
 	*/
-	// SET HOME PAGE
-	update_option('page_on_front', $page_ids['home_page']['page']);
-	update_option('show_on_front', 'page');
-	echo "Home page set as default <br>";
-	
+    
+    // HUSTLE HOMEPAGE OPTIONS
+
+    //  Pulls page info from database for the page that the slide is linking too.
+    $about_page_obj = get_post($page_ids['about_page']['page']);
+
+    //  Creates url to the page that the slide is linking too
+    $about_page_url = site_url('/' . $about_page_obj->post_name . '/');
+    
+    $hustle_options = array(
+        //Enables intro message in theme settings
+        'woo_homepage_enable_intro_message' => true,
+        //Enables blog posts on home page
+        'woo_homepage_enable_blog_posts' => true,
+        //Sets homepage h1
+        'woo_homepage_intro_message_heading' => $main_data['content']['homepage']['content']['homepage_title'],
+        //Sets content under h1
+        'woo_homepage_intro_message_content' => $main_data['content']['homepage']['content']['intro_message_content'],
+        //Sets link button text
+        'woo_homepage_intro_message_button_label' => $main_data['content']['homepage']['content']['intro_message_button_label'],
+        //Button links to about page
+        'woo_homepage_intro_message_button_url' => $about_page_url,
+        //Sets top image on homepage
+        'woo_homepage_intro_message_bg' => $upload_dir['url'] . '/background.jpg',
+        
+        //BLOG AREA TITLE DOESN'T WORK YET
+        //Sets title over blog posts on the homepage
+        //'woo_homepage_blog_area_title' => $main_data['content']['homepage']['blog_area_title'],
+        
+    );
+    
+    $woo_options = maybe_unserialize(get_option('woo_options'));
+
+    //Loops through $hustle_options array and adds options if they aren't added, and updates them if they are
+    foreach ($hustle_options as $key => $val) {
+        if (!add_option($key, $val)) {
+            update_option($key, $val);
+        } 
+        else {
+            echo $key . " wasn't updated. <br>";
+        }
+        $woo_options[$key] = $val;
+    }
+    
+    update_option('woo_options', $woo_options);
+
+    //  Loop to add features and slides
+    for ($i = 1; $i < 4; $i++) {
+
+        //  Pulls page info from database for the page that the slide is linking too.
+        $page_obj = get_post($page_ids['page' . $i]);
+
+        //  Creates url to the page that the slide is linking too
+        $page_url = site_url('/' . $page_obj->post_name . '/');
+
+        //  Creates string of html for the slide content
+        $post_html = '<h2>' . $main_data['content']['page' . $i]['call_to_action_titles'] . '</h2>' . 
+           $main_data['content']['page' . $i]['call_to_action_content'] . '
+           <br>
+           [button link="' . $page_url . '" bg_color="#b324b3" border="#b53ab5"]Read More[/button]';
+
+        //  Create slide post array for slide post
+        $slide_array = array(
+           'post_title'    => '',
+           'post_content'  => $post_html,
+           'post_status'   => 'publish',
+           'post_type'     => 'slide',
+           'post_author'   => 1,
+        );
+
+        //  Create attachment array for slide image
+        $attachment = array(
+           'guid'           => $upload_dir['url'] . '/slider' . $i . '.jpg', 
+           'post_mime_type' => 'image/jpeg',
+           'post_title'     => 'slider' . $i,
+           'post_content'   => '',
+           'post_status'    => 'inherit'
+        );
+
+        //  Insert slide post, and set post id to $slide_id variable
+        $slide_id = wp_insert_post($slide_array);
+
+        //  Insert attachment for image
+        $attachment_id = wp_insert_attachment( $attachment, $upload_dir['path'] . '/slider' . $i . '.jpg', $slide_id );
+
+        //  Include image.php for wp_generate_attachment_metadata
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+        //  Create metadata for attachment
+        $attach_data = wp_generate_attachment_metadata( $attachment_id, $filename );
+
+        //  Append height and width to $attach_data array
+        $attach_data['height'] = 479;
+        $attach_data['width'] = 262;
+
+        //  Update metadata for image attachment
+        wp_update_attachment_metadata( $attachment_id, $attach_data );
+        
+        //  Set feature thumbnail
+        set_post_thumbnail( $slide_id, $attachment_id );
+
+        //  Uncomment to add alt text to images
+        //add_post_meta($attachment_id, '_wp_attachment_image_alt', $main_data['alttext']['slides'][$i], true);
+
+        //  Create feature post array
+        $feature = array(
+           'post_title'    => $main_data['content']['homepage']['title'][($i - 1)],
+           'post_content'  => $main_data['content']['homepage']['box'][($i - 1)],
+           'post_status'   => 'publish',
+           'post_type'     => 'feature',
+           'post_author'   => 1,
+        );
+        
+        $feature_attachment = array(
+           'guid'           => $upload_dir['url'] . '/icon' . $i . '.png', 
+           'post_mime_type' => 'image/png',
+           'post_title'     => 'icon' . $i,
+           'post_content'   => '',
+           'post_status'    => 'inherit'
+        );
+
+        //  Insert feature post
+        $feature_id = wp_insert_post($feature);
+        
+        //  Insert attachment for feature
+        $feature_attachment_id = wp_insert_attachment( $feature_attachment, $upload_dir['path'] . '/icon' . $i . '.png', $feature_id );
+        
+        //  Create metadata for feature attachment
+        $feature_attach_data = wp_generate_attachment_metadata( $feature_attachment_id, $filename );
+
+        //  Append height and width to $attach_data array
+        $feature_attach_data['height'] = 479;
+        $feature_attach_data['width'] = 262;
+
+        //  Update metadata for image attachment
+        wp_update_attachment_metadata( $feature_attachment_id, $feature_attach_data );
+        
+        //  Set feature thumbnail
+        set_post_thumbnail( $feature_id, $feature_attachment_id );
+        
+        //  Uncomment to add alt text to images
+        //add_post_meta($feature_attachment_id, '_wp_attachment_image_alt', $main_data['alttext']['icons'][$i], true);
+
+	}
+    
 	// META DESCRIPTION
 	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
 	echo "Updated meta description. <br>";
@@ -7096,7 +7158,7 @@ function wireframe21(){
    
    //Create attachment array to insert the feature's icon
    $attachment = array(
-       'guid'           => $wp_upload_dir['url'] . '/icon' .  . ($i +1) . '.png', 
+       'guid'           => $wp_upload_dir['url'] . '/icon' . ($i +1) . '.png', 
        'post_mime_type' => 'image/png',
        'post_title'     => 'icon' . ($i + 1),
        'post_content'   => '',
@@ -7282,6 +7344,8 @@ function wireframe21(){
 	echo "Updated site title. <br>";
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
+    
+}
 
 function wireframe22(){
 
@@ -9420,14 +9484,14 @@ function wireframe27(){
 	// CONTENT & PRIVACY PAGE
 
 	$privacy_page = array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
-				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($main_data['content']['privacy']['content']),
-				'post_author' => 1,
-				'post_parent' => ''
-				);
+        'post_type'   => 'page',
+        'post_title'  => stripslashes($main_data['content']['privacy']['title']),
+        'post_name'   => stripslashes($main_data['content']['privacy']['title']),
+        'post_status' => 'publish',
+        'post_content' => stripslashes($main_data['content']['privacy']['content']),
+        'post_author' => 1,
+        'post_parent' => ''
+    );
 
 	wp_insert_post ($privacy_page);	
 
@@ -10438,17 +10502,16 @@ function wireframe30(){
 	// CONTENT & PRIVACY PAGE
 
 	$privacy_page = array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
-				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($main_data['content']['privacy']['content']),
-				'post_author' => 1,
-				'post_parent' => ''
-				);
+        'post_type'   => 'page',
+        'post_title'  => stripslashes($main_data['content']['privacy']['title']),
+        'post_name'   => stripslashes($main_data['content']['privacy']['title']),
+        'post_status' => 'publish',
+        'post_content' => stripslashes($main_data['content']['privacy']['content']),
+        'post_author' => 1,
+        'post_parent' => ''
+    );
 
 	wp_insert_post ($privacy_page);
 
 }
-
 ?>

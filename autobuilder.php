@@ -7123,69 +7123,42 @@ function wireframe21(){
 	
 	// LOGO
 	$logo = base64_decode($main_data['logo']);
+    
+    // AUTHOR NICKNAME
+	update_user_meta($user_id, "nickname", $author_nickname);
+	update_user_meta($user_id, "display_name", $author_nickname);
+	wp_update_user(array('ID' => $user_id, 'display_name' => $author_nickname));
+	echo "User nickname updated. <br>";
+	
+	// IMAGES INSERT
+	$upload_dir = wp_upload_dir();
 
-	//Get about page post id
-	$about_obj = get_post($page_ids['about']);
 
-	//Create slide html for post
-	$slide_html = $main_data['content']['homepage']['slides']['content'] .
-	'<br>[button link="' . site_url('/' . $about_obj->post_name . '/') . '"]Click here[/button]
-	<img src="' . $upload_dir['url'] . '/slide1.png" alt="" />';
+	// create slider folder if it doesn't exist
+	if (!file_exists($upload_dir['path'].'/slider')) {
+		mkdir($upload_dir['path'].'/slider', 0777, true);
+		if (!file_exists($upload_dir['path'].'/slider')) {
+			die('Failed to create directory');
+		}
+	}
+	
+	file_put_contents($upload_dir['path'].'/logo.png', $logo);
+	echo "Logo uploaded. <br>";
+	file_put_contents($upload_dir['path'].'/favicon.ico', $favicon);
+	echo "Favicon uploaded.  <br>";
+	file_put_contents($upload_dir['path'].'/slider1.png', $slider_1);
+	echo "slider 1 uploaded.  <br>";
+	
+	$image_count = sizeof($main_data['content']['homepage']['images']);
+	
+	for ($i = 0; $i < $image_count; $i++) {
+	
+		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
+		file_put_contents($upload_dir['path'].'/icon' . ($i + 1) . '.png', $image);
+		echo "icon" . ($i+1) . ".png uploaded. <br>";
+		
+	}
 
-	//Create post array for wp_insert_post()
-	$slide = array(
-   		'post_title'    => $main_data['content']['homepage']['homepage_title'],
-   		'post_content'  => $slide_html,
-   		'post_status'   => 'publish',
-  	 	'post_author'   => 1,
-  		'post_type'     => 'slide',
-	);
-
-	//Insert slide post
-	wp_insert_post($slide);
-
-	//Loop 3 times to create 3 features, and attach their icons
-	for ($i = 0; $i < 3; $i++){
-   
-   //Create feature array for wp_insert_post
-   $feature =  array(
-       'post_title'    => $main_data['content']['homepage']['content']['title'][$i],
-       'post_content'  => $main_data['content']['homepage']['content']['content'][$i],
-       'post_status'   => 'publish',
-       'post_author'   => 1,
-       'post_type'     => 'feature',
-   );
-   
-   //Create attachment array to insert the feature's icon
-   $attachment = array(
-       'guid'           => $wp_upload_dir['url'] . '/icon' . ($i +1) . '.png', 
-       'post_mime_type' => 'image/png',
-       'post_title'     => 'icon' . ($i + 1),
-       'post_content'   => '',
-       'post_status'    => 'inherit'
-   );
-   
-   
-   //Insert feature post and set the post id to the $icon_id variable
-   $icon_id = wp_insert_post($feature);
-   
-   //Insert attachment for image and store the attachment id in the $attachment_id variable
-   $attachment_id = wp_insert_attachment( $attachment, $upload_dir['path'] . '/icon' . ($i +1) . '.png', $icon_id );
-   
-   //Include image.php for the wp_generate_attachment_metadata function
-   require_once( ABSPATH . 'wp-admin/includes/image.php' );
-   
-   //Create metadata for attachment
-   $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
-   
-   //Append height and width to $attach_data array
-   $attach_data['height'] = 50;
-   $attach_data['width'] = 50;
-   
-   //Update metadata for image attachment
-   wp_update_attachment_metadata( $attach_id, $attach_data );
-
-}
 	$wp_insert = array(	
 		'home_page' => array(
 			'page' => array(
@@ -7329,11 +7302,89 @@ function wireframe21(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
-	
-	// SET HOME PAGE
-	update_option('page_on_front', $page_ids['home_page']['page']);
-	update_option('show_on_front', 'page');
-	echo "Home page set as default <br>";
+    
+    $privacy_page = array(
+        'post_type'   => 'page',
+        'post_title'  => stripslashes($main_data['content']['privacy']['title']),
+        'post_name'   => stripslashes($main_data['content']['privacy']['title']),
+        'post_status' => 'publish',
+        'post_content' => stripslashes($main_data['content']['privacy']['content']),
+        'post_author' => 1,
+        'post_parent' => ''
+    );
+
+	wp_insert_post ($privacy_page);	
+    
+    $privacy_obj = get_post($page_ids['privacy']['page']);
+    
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    
+    if (!add_option('privacy_url', $privacy_url)) {
+        update_option('privacy_url', $privacy_url);
+    }
+    
+    //Get about page post id
+	$about_obj = get_post($page_ids['about']);
+
+	//Create slide html for post
+	$slide_html = $main_data['content']['homepage']['slides']['content'] .
+	'<br>[button link="' . site_url('/' . $about_obj->post_name . '/') . '"]Click here[/button]
+	<img src="' . $upload_dir['url'] . '/slide1.png" alt="" />';
+
+	//Create post array for wp_insert_post()
+	$slide = array(
+   		'post_title'    => $main_data['content']['homepage']['homepage_title'],
+   		'post_content'  => $slide_html,
+   		'post_status'   => 'publish',
+  	 	'post_author'   => 1,
+  		'post_type'     => 'slide',
+	);
+
+	//Insert slide post
+	wp_insert_post($slide);
+
+	//Loop 3 times to create 3 features, and attach their icons
+	for ($i = 0; $i < 3; $i++){
+   
+       //Create feature array for wp_insert_post
+       $feature =  array(
+           'post_title'    => $main_data['content']['homepage']['title'][$i],
+           'post_content'  => $main_data['content']['homepage']['box'][$i],
+           'post_status'   => 'publish',
+           'post_author'   => 1,
+           'post_type'     => 'feature',
+       );
+
+       //Create attachment array to insert the feature's icon
+       $attachment = array(
+           'guid'           => $wp_upload_dir['url'] . '/icon' . ($i +1) . '.png', 
+           'post_mime_type' => 'image/png',
+           'post_title'     => 'icon' . ($i + 1),
+           'post_content'   => '',
+           'post_status'    => 'inherit'
+       );
+
+
+       //Insert feature post and set the post id to the $icon_id variable
+       $icon_id = wp_insert_post($feature);
+
+       //Insert attachment for image and store the attachment id in the $attachment_id variable
+       $attachment_id = wp_insert_attachment( $attachment, $upload_dir['path'] . '/icon' . ($i +1) . '.png', $icon_id );
+
+       //Include image.php for the wp_generate_attachment_metadata function
+       require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+       //Create metadata for attachment
+       $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+
+       //Append height and width to $attach_data array
+       $attach_data['height'] = 50;
+       $attach_data['width'] = 50;
+
+       //Update metadata for image attachment
+       wp_update_attachment_metadata( $attach_id, $attach_data );
+
+    }
 	
 	// META DESCRIPTION
 	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);

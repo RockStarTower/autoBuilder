@@ -7160,6 +7160,26 @@ function wireframe21(){
 	}
 
 	$wp_insert = array(	
+		'home_page' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($home_content),
+				'post_author' => 1,
+				'post_parent' => '',
+				'page_template' => 'page-full.php'
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 1
+			),
+		),
 		'about_page' => array(
 			'page' => array(
 				'post_type'   => 'page',
@@ -7276,22 +7296,13 @@ function wireframe21(){
 	$page_ids = array();
 	foreach( $wp_insert as $page => $type ) {
 		$page_ids[$page]['page'] = wp_insert_post($type['page']);
-		//$type['nav']['ID'] = $page_ids[$page]['page'] + 1;
-		$page_ids[$page]['nav'] = wp_insert_post($type['nav']);
-		update_post_meta($page_ids[$page]['nav'], '_menu_item_classes', 'a:1:{i:0;s:0:"";}');
-		update_post_meta($page_ids[$page]['nav'], '_menu_item_menu_item_parent', 0);
-		update_post_meta($page_ids[$page]['nav'], '_menu_item_object', 'page');
+		$type['nav']['ID'] = $page_ids[$page]['page'] + 1;
+		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
 		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
-		update_post_meta($page_ids[$page]['nav'], '_menu_item_target', '');
-		update_post_meta($page_ids[$page]['nav'], '_menu_item_type', 'post_type');
-		update_post_meta($page_ids[$page]['nav'], '_menu_item_url', '');
-		update_post_meta($page_ids[$page]['nav'], '_menu_item_xfn', '');
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
     
-	//var_dump( maybe_unserialize( get_option('theme_mods_clone-pixe') ) );
-	
     $privacy_page = array(
         'post_type'   => 'page',
         'post_title'  => stripslashes($main_data['content']['privacy']['title']),
@@ -7376,14 +7387,11 @@ function wireframe21(){
     }
 	
 	// META DESCRIPTION
-	$home_meta = maybe_unserialize( get_option( 'wpseo_titles' ));
-	$home_meta['metadesc-home-wpseo'] = $meta_description;
-	update_option("wpseo_titles", $home_meta);
+	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE
 	update_option("blogname", $title_tag);
-	update_option( "blogdescription", "" );
 	echo "Updated site title. <br>";
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";

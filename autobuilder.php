@@ -7302,6 +7302,8 @@ function wireframe21(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
+	
+	update_post_meta(219, '_menu_item_url', home_url()); // Resets the home URL
     
     $privacy_page = array(
         'post_type'   => 'page',

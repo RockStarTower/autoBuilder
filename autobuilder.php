@@ -7123,6 +7123,9 @@ function wireframe21(){
 	
 	// LOGO
 	$logo = base64_decode($main_data['logo']);
+	
+	// SLIDE IMAGE
+	$slider_1 = base64_decode($main_data['content']['page1']['slider_image']);
     
     // AUTHOR NICKNAME
 	update_user_meta($user_id, "nickname", $author_nickname);
@@ -7331,7 +7334,7 @@ function wireframe21(){
 	//Create slide html for post
 	$slide_html = $main_data['content']['homepage']['slides']['content'] .
 	'<br>[button link="' . site_url('/' . $about_obj->post_name . '/') . '"]Click here[/button]
-	<img src="' . $upload_dir['url'] . '/slide1.png" alt="" />';
+	<img src="' . $upload_dir['url'] . '/slider1.png" alt="" />';
 
 	//Create post array for wp_insert_post()
 	$slide = array(

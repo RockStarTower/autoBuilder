@@ -7318,7 +7318,9 @@ function wireframe21(){
         'post_parent' => ''
     );
 
-	wp_insert_post ($privacy_page);	
+	$privacy_nav_id = wp_insert_post ($privacy_page);
+	$privacy_nav_id = $privacy_nav_id + 1;
+	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
     
     $privacy_obj = get_post($page_ids['privacy']['page']);
     

@@ -7331,7 +7331,7 @@ function wireframe21(){
     }
     
     //Get about page post id
-	$about_obj = get_post($page_ids['about']);
+	$about_obj = get_post($page_ids['about_page']['page']);
 
 	//Create slide html for post
 	$slide_html = $main_data['content']['homepage']['content']['slide_title'].
@@ -7395,7 +7395,9 @@ function wireframe21(){
     }
 	
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	$seo_array = maybe_unserialize( get_option( 'wpseo_titles' ));
+	$seo_array['metadesc-home-wpseo'] = $meta_description;
+	update_option( 'wpseo_titles', $seo_array );
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE

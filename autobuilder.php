@@ -7124,7 +7124,7 @@ function wireframe21(){
 	// LOGO
 	$logo = base64_decode($main_data['logo']);
 	
-	// SLIDE IMAGE
+	// SLIDER IMAGE
 	$slider_1 = base64_decode($main_data['content']['page1']['slider_image']);
     
     // AUTHOR NICKNAME
@@ -7303,7 +7303,7 @@ function wireframe21(){
 		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
 		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
 		echo $type['page']['post_title'] . ' was created. <br>';
-		echo $type['page']['nav'] . ' menu item updated. <br>';
+		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
 	
 	update_post_meta(219, '_menu_item_url', home_url()); // Resets the home URL
@@ -7332,13 +7332,13 @@ function wireframe21(){
 	$about_obj = get_post($page_ids['about']);
 
 	//Create slide html for post
-	$slide_html = $main_data['content']['homepage']['slides']['content'] .
+	$slide_html = $main_data['content']['homepage']['content']['slide_title'].
 	'<br>[button link="' . site_url('/' . $about_obj->post_name . '/') . '"]Click here[/button]
 	<img src="' . $upload_dir['url'] . '/slider1.png" alt="" />';
 
 	//Create post array for wp_insert_post()
 	$slide = array(
-   		'post_title'    => $main_data['content']['homepage']['homepage_title'],
+   		'post_title'    => $main_data['content']['homepage']['content']['homepage_title'],
    		'post_content'  => $slide_html,
    		'post_status'   => 'publish',
   	 	'post_author'   => 1,
@@ -7362,7 +7362,7 @@ function wireframe21(){
 
        //Create attachment array to insert the feature's icon
        $attachment = array(
-           'guid'           => $wp_upload_dir['url'] . '/icon' . ($i +1) . '.png', 
+           'guid'           => $upload_dir['url'] . '/icon' . ($i +1) . '.png', 
            'post_mime_type' => 'image/png',
            'post_title'     => 'icon' . ($i + 1),
            'post_content'   => '',
@@ -7380,14 +7380,15 @@ function wireframe21(){
        require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
        //Create metadata for attachment
-       $attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+       $attach_data = wp_generate_attachment_metadata( $attachment_id, $filename );
 
        //Append height and width to $attach_data array
        $attach_data['height'] = 50;
        $attach_data['width'] = 50;
 
        //Update metadata for image attachment
-       wp_update_attachment_metadata( $attach_id, $attach_data );
+	   add_post_meta($icon_id, '_thumbnail_id', $attachment_id);
+       wp_update_attachment_metadata( $attachment_id, $attach_data );
 
     }
 	

@@ -7398,6 +7398,8 @@ function wireframe21(){
 	
 	// SITE TITLE
 	update_option("blogname", $title_tag);
+	update_option("blogdescription", "");
+	
 	echo "Updated site title. <br>";
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";

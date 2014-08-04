@@ -10089,7 +10089,9 @@ function wireframe29(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_nav_id = wp_insert_post ($privacy_page);
+	$privacy_nav_id = $privacy_nav_id + 1;
+	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -10151,6 +10153,8 @@ function wireframe29(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
+	
+	update_post_meta(215, '_menu_item_url', home_url()); // Resets the home URL
 	
 	// CREATE SLIDES
 
@@ -10235,7 +10239,6 @@ function wireframe29(){
 
 
 	// META DESCRIPTION
-	//update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
 	$seo_array = maybe_unserialize( get_option( 'et_vertex' ));
 	$seo_array['vertex_seo_home_descriptiontext'] = $meta_description;
 	update_option( 'et_vertex', $seo_array );

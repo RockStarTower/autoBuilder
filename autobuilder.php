@@ -7315,17 +7315,18 @@ function wireframe21(){
         'post_parent' => ''
     );
 
-	$privacy_nav_id = wp_insert_post ($privacy_page);
-	$privacy_nav_id = $privacy_nav_id + 1;
+	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_nav_id = $privacy_id + 1;
 	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
     
-    $privacy_obj = get_post($page_ids['privacy']['page']);
+    $privacy_obj = get_post($privacy_id);
     
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
     
     if (!add_option('privacy_url', $privacy_url)) {
         update_option('privacy_url', $privacy_url);
     }
+	
     
     //Get about page post id
 	$about_obj = get_post($page_ids['about_page']['page']);
@@ -10094,9 +10095,17 @@ function wireframe29(){
 				'post_parent' => ''
 				);
 
-	$privacy_nav_id = wp_insert_post ($privacy_page);
-	$privacy_nav_id = $privacy_nav_id + 1;
+	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_nav_id = $privacy_id + 1;
 	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    
+    if (!add_option('privacy_url', $privacy_url)) {
+        update_option('privacy_url', $privacy_url);
+    }
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -10164,7 +10173,6 @@ function wireframe29(){
 	// INSERT HOMEPAGE BACKGROUND IMAGE
 	$vertex_array = maybe_unserialize( get_option( 'et_vertex' ));
 	$vertex_array['vertex_header_bg_image'] = home_url() . '/wp-content/uploads/background.jpg';
-	update_option( 'et_vertex', $vertex_array );
 
 	// CREATE SLIDES
 
@@ -10190,6 +10198,9 @@ function wireframe29(){
 	if (!update_option('vertex_feat_pages', $slide_pages)) {
 		add_option('vertex_feat_pages', $slide_pages);
 	}
+	
+	$vertex_array['vertex_feat_pages'] = $slide_pages;
+	update_option( 'et_vertex', $vertex_array );
 
 	//ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {

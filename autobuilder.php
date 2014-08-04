@@ -9922,7 +9922,7 @@ function wireframe29(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -10235,11 +10235,15 @@ function wireframe29(){
 
 
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	//update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	$seo_array = maybe_unserialize( get_option( 'et_vertex' ));
+	$seo_array['vertex_seo_home_descriptiontext'] = $meta_description;
+	update_option( 'et_vertex', $seo_array );
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE
 	update_option("blogname", $title_tag);
+	update_option("blogdescription", "");
 	echo "Updated site title. <br>";
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";

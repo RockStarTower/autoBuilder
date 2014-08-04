@@ -7112,11 +7112,8 @@ function wireframe21(){
 	$page3_content = ($main_data['content']['page3']['content']);
 	
 	// BLOG
-	$blog_nav = ($main_data['content']['blog']['nav']);
-	$blog_template = ($main_data['content']['blog']['template']);
-	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);

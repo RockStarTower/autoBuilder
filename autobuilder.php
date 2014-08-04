@@ -9931,6 +9931,9 @@ function wireframe29(){
 	// LOGO
 	$logo = base64_decode($main_data['logo']);
 	
+    // HOMEPAGE BG
+	$homepage_image = base64_decode($main_data['content']['homepage']['background']);
+	
 	// SLIDE IMAGES
 	$slider_1 = base64_decode($main_data['content']['page1']['slider_image']);
 	$slider_2 = base64_decode($main_data['content']['page2']['slider_image']);
@@ -9960,6 +9963,8 @@ function wireframe29(){
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
 	echo "Logo uploaded. <br>";
+	file_put_contents($upload_dir['path'].'/background.jpg', $homepage_image);
+	echo "background image uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/favicon.ico', $favicon);
 	echo "Favicon uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/slider1.jpg', $slider_1);
@@ -10156,6 +10161,11 @@ function wireframe29(){
 	
 	update_post_meta(215, '_menu_item_url', home_url()); // Resets the home URL
 	
+	// INSERT HOMEPAGE BACKGROUND IMAGE
+	$vertex_array = maybe_unserialize( get_option( 'et_vertex' ));
+	$vertex_array['vertex_header_bg_image'] = home_url() . '/wp-content/uploads/background.jpg';
+	update_option( 'et_vertex', $vertex_array );
+
 	// CREATE SLIDES
 
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );

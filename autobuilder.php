@@ -7568,7 +7568,7 @@ function wireframe22(){
 	// HOME
 	$home_title = 'Home';
 	$home_content = ($main_data['content']['homepage']['content']);
-	$homepage_title = '<h1>' .  ($main_data['content']['homepage']['content'][0]) . '</h1>';
+	$homepage_title = ($main_data['content']['homepage']['content'][0]);
 
 	// ABOUT
 	$about_title = ($main_data['content']['about']['title']);
@@ -7702,7 +7702,8 @@ function wireframe22(){
 	); 
 
 	$wk_id = wp_insert_post($create_widgetkit);
-	$home_content = str_replace("ab_slider_id", $wk_id, $home_content);
+	//$home_content = str_replace("ab_slider_id", $wk_id, $home_content);
+	$wk_widget_content = '[widgetkit id=' . $wk_id . ']'; //create shortcode to be used in text widget
 	echo "Widgetkit created. <br>";
 	
 	$wp_insert = array(	
@@ -7864,8 +7865,32 @@ function wireframe22(){
 		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
 	update_post_meta(186, '_menu_item_url', home_url()); // Resets the home URL
+	
+	
+	// ADD PAGE LINKS TO SLIDER CALLS TO ACTION
+	$wk_post_obj = get_post($wk_id);
+	$wk_post_content = json_decode($wk_post_obj->post_content, TRUE); // Gets widgetkit post content and decodes the json array
+	// page objects array
+	$page_array = array(
+		'page1' => get_post($page_ids['page1']['page']),
+		'page2' => get_post($page_ids['page2']['page']),
+		'page3' => get_post($page_ids['page3']['page'])
+	);	
+	// Add <h2> and <a> tags to each caption
+	$counter = 1;
+	foreach( $wk_post_content['captions'] as $key => $val ) {
+		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
+		$counter ++;
+	}
+	$wk_post_content = json_encode($wk_post_content); // Re-encode to json array
+	$update_array = array(
+		'ID' => $wk_id,
+		'post_content' => $wk_post_content
+	);
+	wp_update_post($update_array); // update the widgetkit content
 
-	//ATTACH IMAGES TO FEATURES
+
+	// ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {
 		$filename = 'image' . ($i + 1) . '.jpg';
 		$parent_post_id = ${'feature' . ($i + 1) . '_id'};
@@ -7885,31 +7910,12 @@ function wireframe22(){
 		wp_update_attachment_metadata( $attach_id, $attach_data );
 		set_post_thumbnail( $parent_post_id, $attach_id );
 	}
-	
-	// SET HOME PAGE AS STATIC PAGE
-	//update_option('page_on_front', $page_ids['home_page']['page']);
-	//update_option('show_on_front', 'page');
-	//echo "Home page set as default <br>";
 
-	// UPDATE HOMEPAGE H1
-	//Get sidebar configuration array and unserialize it
-  	$sidebars_widgets = maybe_unserialize( get_option('sidebars_widgets') );
-
-  	//Get text widget array and unserialize it
-  	$text_widgets = maybe_unserialize( get_option('widget_text') );
-
-  	//Append a new array item to the sidebar
-	$sidebars_widgets['h1'][] = 'text-100';
-	//Append a new text widget title
-	$text_widgets[100]['title'] = '';
-	//Append a new text widget text
-	$text_widgets[100]['text'] = $homepage_title;
-
- 	//Update the widget_text option. The array is serialized automatically in the update_option function
-  	update_option('widget_text', $text_widgets);
-
-  	//Update the sidebars_widgets option. The array is serialized automatically in the update_option function
-  	update_option('sidebars_widgets', $sidebars_widgets);
+	// UPDATE HOMEPAGE H1 & SLIDER
+  	$text_widgets = maybe_unserialize( get_option('widget_text') ); //Get text widget array and unserialize it
+	$text_widgets[5]['title'] = $homepage_title; //Update title in H1 text widget
+	$text_widgets[6]['text'] = $wk_widget_content; //Update content in slider text widget
+   	update_option('widget_text', $text_widgets); //Update the widget_text option. The array is serialized automatically in the update_option function
 	
 	// META DESCRIPTION
 	$seo_array = maybe_unserialize( get_option( 'wpseo_titles' ));

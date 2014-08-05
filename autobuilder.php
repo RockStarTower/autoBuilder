@@ -7881,7 +7881,7 @@ function wireframe22(){
 		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
 		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
 		echo $type['page']['post_title'] . ' was created. <br>';
-		echo $type['page']['nav'] . ' menu item updated. <br>';
+		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
 
 	//ATTACH IMAGES TO FEATURES
@@ -7905,10 +7905,10 @@ function wireframe22(){
 		set_post_thumbnail( $parent_post_id, $attach_id );
 	}
 	
-	// SET HOME PAGE
-	update_option('page_on_front', $page_ids['home_page']['page']);
-	update_option('show_on_front', 'page');
-	echo "Home page set as default <br>";
+	// SET HOME PAGE AS STATIC PAGE
+	//update_option('page_on_front', $page_ids['home_page']['page']);
+	//update_option('show_on_front', 'page');
+	//echo "Home page set as default <br>";
 
 	// UPDATE HOMEPAGE H1
 	//Get sidebar configuration array and unserialize it
@@ -7931,7 +7931,9 @@ function wireframe22(){
   	update_option('sidebars_widgets', $sidebars_widgets);
 	
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	$seo_array = maybe_unserialize( get_option( 'wpseo_titles' ));
+	$seo_array['metadesc-home-wpseo'] = $meta_description;
+	update_option( 'wpseo_titles', $seo_array );
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE

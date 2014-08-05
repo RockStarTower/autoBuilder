@@ -8903,7 +8903,11 @@ function wireframe25(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	//DELETING PRIVACY NAV ITEM
+	$privacy_id = wp_insert_post ($privacy_page);
+
+	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -8991,6 +8995,12 @@ function wireframe25(){
 		add_option('fusion_feat_pages', $slide_pages);
 	}
 
+	//ENABLE FEATURED PAGES FOR SLIDER
+	$fusion_array = maybe_unserialize( get_option( 'et_fusion' ));
+	$fusion_array['fusion_feat_pages'] = $slide_pages;
+
+    update_option( 'et_fusion', $fusion_array );
+
 	//ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {
 		$filename = 'image' . ($i + 1) . '.jpg';
@@ -9064,6 +9074,9 @@ function wireframe25(){
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+   	//DELETING PRIVACY NAV ITEM
+
+   	
 }
 
 function wireframe26(){

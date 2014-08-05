@@ -7112,11 +7112,8 @@ function wireframe21(){
 	$page3_content = ($main_data['content']['page3']['content']);
 	
 	// BLOG
-	$blog_nav = ($main_data['content']['blog']['nav']);
-	$blog_template = ($main_data['content']['blog']['template']);
-	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -7318,17 +7315,18 @@ function wireframe21(){
         'post_parent' => ''
     );
 
-	$privacy_nav_id = wp_insert_post ($privacy_page);
-	$privacy_nav_id = $privacy_nav_id + 1;
+	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_nav_id = $privacy_id + 1;
 	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
     
-    $privacy_obj = get_post($page_ids['privacy']['page']);
+    $privacy_obj = get_post($privacy_id);
     
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
     
     if (!add_option('privacy_url', $privacy_url)) {
         update_option('privacy_url', $privacy_url);
     }
+	
     
     //Get about page post id
 	$about_obj = get_post($page_ids['about_page']['page']);
@@ -9942,7 +9940,7 @@ function wireframe29(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -9950,6 +9948,9 @@ function wireframe29(){
 	
 	// LOGO
 	$logo = base64_decode($main_data['logo']);
+	
+    // HOMEPAGE BG
+	$homepage_image = base64_decode($main_data['content']['homepage']['background']);
 	
 	// SLIDE IMAGES
 	$slider_1 = base64_decode($main_data['content']['page1']['slider_image']);
@@ -9980,6 +9981,8 @@ function wireframe29(){
 	
 	file_put_contents($upload_dir['path'].'/logo.png', $logo);
 	echo "Logo uploaded. <br>";
+	file_put_contents($upload_dir['path'].'/background.jpg', $homepage_image);
+	echo "background image uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/favicon.ico', $favicon);
 	echo "Favicon uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/slider1.jpg', $slider_1);
@@ -10109,7 +10112,17 @@ function wireframe29(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_nav_id = $privacy_id + 1;
+	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    
+    if (!add_option('privacy_url', $privacy_url)) {
+        update_option('privacy_url', $privacy_url);
+    }
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -10172,6 +10185,12 @@ function wireframe29(){
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
 	
+	update_post_meta(215, '_menu_item_url', home_url()); // Resets the home URL
+	
+	// INSERT HOMEPAGE BACKGROUND IMAGE
+	$vertex_array = maybe_unserialize( get_option( 'et_vertex' ));
+	$vertex_array['vertex_header_bg_image'] = home_url() . '/wp-content/uploads/background.jpg';
+
 	// CREATE SLIDES
 
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );
@@ -10196,6 +10215,9 @@ function wireframe29(){
 	if (!update_option('vertex_feat_pages', $slide_pages)) {
 		add_option('vertex_feat_pages', $slide_pages);
 	}
+	
+	$vertex_array['vertex_feat_pages'] = $slide_pages;
+	update_option( 'et_vertex', $vertex_array );
 
 	//ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {
@@ -10255,11 +10277,14 @@ function wireframe29(){
 
 
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	$seo_array = maybe_unserialize( get_option( 'et_vertex' ));
+	$seo_array['vertex_seo_home_descriptiontext'] = $meta_description;
+	update_option( 'et_vertex', $seo_array );
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE
 	update_option("blogname", $title_tag);
+	update_option("blogdescription", "");
 	echo "Updated site title. <br>";
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";

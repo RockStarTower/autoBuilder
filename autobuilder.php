@@ -292,8 +292,8 @@ function wireframe1(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -631,8 +631,8 @@ function wireframe2(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -965,8 +965,8 @@ function wireframe3(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -1300,8 +1300,8 @@ function wireframe4(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -1630,8 +1630,8 @@ function wireframe5(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -1960,8 +1960,8 @@ function wireframe6(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -2295,8 +2295,8 @@ function wireframe7(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -2711,8 +2711,8 @@ function wireframe8(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -3042,8 +3042,8 @@ function wireframe9(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -3372,8 +3372,8 @@ function wireframe10(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -3702,8 +3702,8 @@ function wireframe11(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -4033,8 +4033,8 @@ function wireframe12(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -4377,8 +4377,8 @@ function wireframe13(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -4680,8 +4680,8 @@ function wireframe14(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -5010,8 +5010,8 @@ function wireframe15(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -5343,8 +5343,8 @@ function wireframe16(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -5662,8 +5662,8 @@ function wireframe17(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -6524,8 +6524,8 @@ function wireframe19(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -6827,8 +6827,8 @@ function wireframe20(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -7509,8 +7509,8 @@ function wireframe22(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpeg', $image);
-		echo "image-" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
+		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
 		
 	}
 	
@@ -7919,7 +7919,7 @@ function wireframe23(){
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
 		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -8033,7 +8033,18 @@ function wireframe23(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
+
+	//DELETING PRIVACY NAV ITEM
+	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
+
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -8120,6 +8131,12 @@ function wireframe23(){
 	if (!update_option('nimble_feat_pages', $slide_pages)) {
 		add_option('nimble_feat_pages', $slide_pages);
 	}
+
+	//ENABLE FEATURED PAGES FOR SLIDER
+	$nimble_array = maybe_unserialize( get_option( 'et_nimble' ));
+	$nimble_array['nimble_feat_pages'] = $slide_pages;
+
+    update_option( 'et_nimble', $nimble_array );
 
 	//ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {
@@ -8285,8 +8302,8 @@ function wireframe24(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -8619,7 +8636,7 @@ function wireframe25(){
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
 		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -8987,8 +9004,8 @@ function wireframe26(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -9317,8 +9334,8 @@ function wireframe27(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -9657,8 +9674,8 @@ function wireframe28(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpeg', $image);
-		echo "image-" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
+		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
 		
 	}
 	
@@ -9978,7 +9995,7 @@ function wireframe29(){
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
 		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image-" . ($i+1) . ".jpg uploaded. <br>";
+		echo "image" . ($i+1) . ".jpg uploaded. <br>";
 		
 	}
 	
@@ -10346,8 +10363,8 @@ function wireframe30(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image-' . ($i + 1) . '.jpeg', $image);
-		echo "image-" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
+		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
 		
 	}
 	

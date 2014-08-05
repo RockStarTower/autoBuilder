@@ -530,6 +530,13 @@ function wireframe1(){
 
 	wp_insert_post ($privacy_page);	
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe2(){
@@ -860,6 +867,13 @@ function wireframe2(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 
@@ -1200,6 +1214,13 @@ function wireframe3(){
 
 	wp_insert_post ($privacy_page);
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe4(){
@@ -1529,6 +1550,13 @@ function wireframe4(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 
@@ -1860,6 +1888,13 @@ function wireframe5(){
 
 	wp_insert_post ($privacy_page);
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe6(){
@@ -2189,6 +2224,13 @@ function wireframe6(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 
@@ -2611,6 +2653,13 @@ function wireframe7(){
 
 	wp_insert_post ($privacy_page);
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe8(){
@@ -2940,6 +2989,13 @@ function wireframe8(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 
@@ -3272,6 +3328,13 @@ function wireframe9(){
 
 	wp_insert_post ($privacy_page);
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe10(){
@@ -3602,6 +3665,13 @@ function wireframe10(){
 
 	wp_insert_post ($privacy_page);	
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe11(){
@@ -3930,7 +4000,14 @@ function wireframe11(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);	
+	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}	
 
 }
 
@@ -4277,6 +4354,13 @@ function wireframe12(){
 
 	wp_insert_post ($privacy_page);
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 	
 function wireframe13(){
@@ -4578,6 +4662,13 @@ function wireframe13(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }	
 
@@ -4910,6 +5001,13 @@ function wireframe14(){
 
 	wp_insert_post ($privacy_page);	
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe15(){
@@ -5238,7 +5336,14 @@ function wireframe15(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);	
+	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}	
 
 }
 
@@ -5562,6 +5667,13 @@ function wireframe16(){
 
 	wp_insert_post ($privacy_page);
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe17(){
@@ -5863,6 +5975,13 @@ function wireframe17(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }	
 
@@ -6424,6 +6543,13 @@ function wireframe18(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe19(){
@@ -6725,6 +6851,13 @@ function wireframe19(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }	
 
@@ -7067,6 +7200,13 @@ function wireframe20(){
 				);
 
 	wp_insert_post ($privacy_page);	
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 
@@ -7813,6 +7953,13 @@ function wireframe22(){
 
 	wp_insert_post ($privacy_page);	
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe23(){
@@ -8201,6 +8348,7 @@ function wireframe23(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
+
 }
 
 function wireframe24(){
@@ -8529,6 +8677,13 @@ function wireframe24(){
 				);
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 
@@ -8903,6 +9058,12 @@ function wireframe25(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 }
 
 function wireframe26(){
@@ -9231,6 +9392,13 @@ function wireframe26(){
 				);
 
 	wp_insert_post ($privacy_page);	
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 
@@ -9573,6 +9741,13 @@ function wireframe27(){
 
 	wp_insert_post ($privacy_page);	
 
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
+
 }
 
 function wireframe28(){
@@ -9889,6 +10064,12 @@ function wireframe28(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 	
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 }
 
 function wireframe29(){
@@ -10617,6 +10798,13 @@ function wireframe30(){
     );
 
 	wp_insert_post ($privacy_page);
+
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+   
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}
 
 }
 ?>

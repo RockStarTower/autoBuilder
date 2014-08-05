@@ -7594,7 +7594,7 @@ function wireframe22(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -7706,26 +7706,6 @@ function wireframe22(){
 	echo "Widgetkit created. <br>";
 	
 	$wp_insert = array(	
-		'home_page' => array(
-			'page' => array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($home_content),
-				'post_author' => 1,
-				'post_parent' => '',
-				'page_template' => 'page-full.php'
-			),
-			'nav' => array(
-				'post_type'   => 'nav_menu_item',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_author' => 1,
-				'menu_order' => 1
-			),
-		),
 		'about_page' => array(
 			'page' => array(
 				'post_type'   => 'page',
@@ -7883,6 +7863,7 @@ function wireframe22(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
+	update_post_meta(186, '_menu_item_url', home_url()); // Resets the home URL
 
 	//ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {
@@ -7953,7 +7934,9 @@ function wireframe22(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);	
+	$privacy_id = wp_insert_post ($privacy_page);	//create the privacy page and assign its id to the $privacy_id variable
+	$privacy_nav_id = $privacy_id +1;
+	wp_delete_post( $privacy_nav_id ); // remove privacy page from navigation
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');

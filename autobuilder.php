@@ -8348,7 +8348,6 @@ function wireframe23(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
-
 }
 
 function wireframe24(){
@@ -8903,7 +8902,7 @@ function wireframe25(){
 				'post_parent' => ''
 				);
 
-	//DELETING PRIVACY NAV ITEM
+	//DELETING
 	$privacy_id = wp_insert_post ($privacy_page);
 
 	$privacy_nav_id = $privacy_id + 1;
@@ -9821,11 +9820,13 @@ function wireframe28(){
 	$slider_1 = base64_decode($main_data['content']['page1']['slider_image']);
 	$slider_2 = base64_decode($main_data['content']['page2']['slider_image']);
 	$slider_3 = base64_decode($main_data['content']['page3']['slider_image']);
+	$slider_4 = base64_decode($main_data['content']['page4']['slider_image']);
 	
 	// SLIDER CONTENT
 	$caption1 = ($main_data['content']['page1']['slider_content']);
 	$caption2 = ($main_data['content']['page2']['slider_content']);
 	$caption3 = ($main_data['content']['page3']['slider_content']);
+	$caption4 = ($main_data['content']['page4']['slider_content']);
 	
 	// AUTHOR NICKNAME
 	update_user_meta($user_id, "nickname", $author_nickname);
@@ -9854,6 +9855,8 @@ function wireframe28(){
 	echo "slider 2 uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/slider/slider3.jpg', $slider_3);
 	echo "slider 3 uploaded.  <br>";
+	file_put_contents($upload_dir['path'].'/slider/slider4.jpg', $slider_4);
+	echo "slider 4 uploaded.  <br>";
 	
 	$image_count = sizeof($main_data['content']['homepage']['images']);
 	
@@ -9868,25 +9871,21 @@ function wireframe28(){
 	// WIDGETKIT CREATION
 	$widgetkit_settings = array(
 		'type' => 'gallery',
-		'id' => 0,
-		'name' => 'slider',
+		'id' => 216,
+		'name' => 'sliders',
 		'settings' => array(
-			'style' => 'default',
+			'style' => 'wall',
 			'width' => 'auto',
-			'height' => 350,
-			'autoplay' => 1,
+			'height' => 'auto',
 			'order' => 'default',
-			'interval' => 5000,
-			'duration' => 500,
-			'index' => 0,
-			'navigation' => 1,
-			'buttons' => 1,
-			'slices' => 20,
-			'animated' => 'fade',
-			'caption_animation_duration' => 500,
+			'effect' => 'spotlight',
+			'margin' => '',
+			'corners' => '',
 			'lightbox' => 0,
+			'lightbox_caption' => 1,
+			'spotlight_effect' => 'top'
 		),
-		'style' => 'default',
+		'style' => 'wall',
 		'paths' => array(
 			'\/slider',
 		),
@@ -9894,11 +9893,13 @@ function wireframe28(){
 			'\/slider\/slider1.jpg' => stripslashes($caption1),
 			'\/slider\/slider2.jpg' => stripslashes($caption2),
 			'\/slider\/slider3.jpg' => stripslashes($caption3),
+			'\/slider\/slider4.jpg' => stripslashes($caption4),
 		),
 		'links' => array(
 			'\/slider\/slider1.jpg' => '',
 			'\/slider\/slider2.jpg' => '',
 			'\/slider\/slider3.jpg' => '',
+			'\/slider\/slider4.jpg' => '',
 		),
 	);
 	
@@ -9915,6 +9916,18 @@ function wireframe28(){
 	); 
 
 	$wk_id = wp_insert_post($create_widgetkit);
+
+	//WIDGETKIT STYLE UPDATE
+	//$wk_post = get_post($wk_id);
+	//$wk_settings = json_decode($wk_post->post_content, true);
+	//$wk_settings['settings']['lightbox_caption'] = 1;
+	//$wk_settings['settings']['spotlight_effect'] = 'top';
+	//$update_array = array(
+	//	'ID'=>$wk_id,
+	//	'post_content'=>json_encode($wk_settings)
+	//	);
+	//wp_update_post($update_array);
+
 	$home_content = str_replace("ab_slider_id", $wk_id, $home_content);
 	echo "Widgetkit created. <br>";
 	

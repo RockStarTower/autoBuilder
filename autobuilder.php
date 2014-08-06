@@ -7568,7 +7568,7 @@ function wireframe22(){
 	// HOME
 	$home_title = 'Home';
 	$home_content = ($main_data['content']['homepage']['content']);
-	$homepage_title = '<h1>' .  ($main_data['content']['homepage']['content'][0]) . '</h1>';
+	$homepage_title = ($main_data['content']['homepage']['content'][0]);
 
 	// ABOUT
 	$about_title = ($main_data['content']['about']['title']);
@@ -7594,7 +7594,7 @@ function wireframe22(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -7701,31 +7701,13 @@ function wireframe22(){
 	    'comment_status' => 'closed' 
 	); 
 
-	$wk_id = wp_insert_post($create_widgetkit);
-	$home_content = str_replace("ab_slider_id", $wk_id, $home_content);
+	$wk_id = wp_insert_post($create_widgetkit); //create widgekit slider
+	$wk_widget_content = '[widgetkit id=' . $wk_id . ']'; //create shortcode to be used in text widget
 	echo "Widgetkit created. <br>";
 	
+	
+	// CREATE PAGES ARRAY
 	$wp_insert = array(	
-		'home_page' => array(
-			'page' => array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($home_content),
-				'post_author' => 1,
-				'post_parent' => '',
-				'page_template' => 'page-full.php'
-			),
-			'nav' => array(
-				'post_type'   => 'nav_menu_item',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_author' => 1,
-				'menu_order' => 1
-			),
-		),
 		'about_page' => array(
 			'page' => array(
 				'post_type'   => 'page',
@@ -7857,6 +7839,7 @@ function wireframe22(){
 	for ($i = 1; $i < 4; $i++) {
 		${'feature' . $i . '_id'} = wp_insert_post($features_array['feature-' . $i]);
 	}
+
 	
 	// SET FAVICON
 	$favicon_maker = array(
@@ -7868,10 +7851,10 @@ function wireframe22(){
 		'post_status' => 'inherit'
 		
 	);
-	
 	$filename = $upload_dir['path'].'/favicon.ico';
 	wp_insert_attachment( $favicon_maker, $filename, '0' );
 	echo "Favicon image set in settings. <br>";
+
 	
 	// INSERT PAGES
 	$page_ids = array();
@@ -7881,57 +7864,65 @@ function wireframe22(){
 		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
 		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
 		echo $type['page']['post_title'] . ' was created. <br>';
-		echo $type['page']['nav'] . ' menu item updated. <br>';
+		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
+	update_post_meta(186, '_menu_item_url', home_url()); // Resets the home URL
+	
+	
+	// ADD PAGE LINKS TO SLIDER CALLS TO ACTION
+	$wk_post_obj = get_post($wk_id);
+	$wk_post_content = json_decode($wk_post_obj->post_content, TRUE);	// Get widgetkit post content and decode the json array
+	// page objects array
+	$page_array = array(
+		'page1' => get_post($page_ids['page1']['page']),
+		'page2' => get_post($page_ids['page2']['page']),
+		'page3' => get_post($page_ids['page3']['page'])
+	);	
+	// Add <h2> and <a> tags to each caption
+	$counter = 1;
+	foreach( $wk_post_content['captions'] as $key => $val ) {
+		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
+		$counter ++;
+	}
+	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$update_array = array(
+		'ID' => $wk_id,
+		'post_content' => $wk_post_content
+	);
+	wp_update_post($update_array);	// update the widgetkit content
 
-	//ATTACH IMAGES TO FEATURES
+
+	// ATTACH IMAGES TO FEATURES
 	for ($i = 0; $i < 3; $i++) {
-		$filename = 'image' . ($i + 1) . '.jpg';
+		$filename = 'image' . ($i + 1) . '.jpeg';
 		$parent_post_id = ${'feature' . ($i + 1) . '_id'};
 		$wp_upload_dir = wp_upload_dir();
+		// array for image attachment
 		$attachment = array(			
-		    'guid'           => $wp_upload_dir['url'] . '/' . 'image' . ($i + 1) . '.jpg', 
+		    'guid'           => $wp_upload_dir['path'] . '/' . 'image' . ($i + 1) . '.jpeg', 
 			'post_mime_type' => 'image/jpeg',
 			'post_title'     => 'image' . ($i + 1),
 			'post_content'   => '',
 			'post_status'    => 'inherit'
 		);
-		$attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
-		$attach_data = wp_generate_attachment_metadata( $attach_id, 'image' . ($i +1) . '.jpg' );
-		$attach_data['width'] = 250;
-		$attach_data['height'] = 250;
-		$attach_data['hwstring_small'] = 'height="250" width="250"'; 
-		wp_update_attachment_metadata( $attach_id, $attach_data );
-		set_post_thumbnail( $parent_post_id, $attach_id );
+		$attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );	// insert image as attachment
+		$attach_data = wp_generate_attachment_metadata( $attach_id, $wp_upload_dir['path'] . '/' . 'image' . ($i + 1) . '.jpeg' );	// create meta data for image
+		$attach_data['sizes']['thumbnail'] = $attach_data['sizes']['et-portfolio-medium-page-thumb'];	// set thumbnail to largest image size
+		wp_update_attachment_metadata( $attach_id, $attach_data );	// insert meta data for image
+		set_post_thumbnail( $parent_post_id, $attach_id );	// set image as thumnail for feature
 	}
-	
-	// SET HOME PAGE
-	update_option('page_on_front', $page_ids['home_page']['page']);
-	update_option('show_on_front', 'page');
-	echo "Home page set as default <br>";
 
-	// UPDATE HOMEPAGE H1
-	//Get sidebar configuration array and unserialize it
-  	$sidebars_widgets = maybe_unserialize( get_option('sidebars_widgets') );
 
-  	//Get text widget array and unserialize it
-  	$text_widgets = maybe_unserialize( get_option('widget_text') );
-
-  	//Append a new array item to the sidebar
-	$sidebars_widgets['h1'][] = 'text-100';
-	//Append a new text widget title
-	$text_widgets[100]['title'] = '';
-	//Append a new text widget text
-	$text_widgets[100]['text'] = $homepage_title;
-
- 	//Update the widget_text option. The array is serialized automatically in the update_option function
-  	update_option('widget_text', $text_widgets);
-
-  	//Update the sidebars_widgets option. The array is serialized automatically in the update_option function
-  	update_option('sidebars_widgets', $sidebars_widgets);
+	// UPDATE HOMEPAGE H1 & SLIDER
+  	$text_widgets = maybe_unserialize( get_option('widget_text') );		//Get text widget array and unserialize it
+	$text_widgets[5]['title'] = $homepage_title;	//Update title in H1 text widget
+	$text_widgets[6]['text'] = $wk_widget_content;	//Update content in slider text widget
+   	update_option('widget_text', $text_widgets);	//Update the widget_text option. The array is serialized automatically in the update_option function
 	
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	$seo_array = maybe_unserialize( get_option( 'wpseo_titles' ));
+	$seo_array['metadesc-home-wpseo'] = $meta_description;
+	update_option( 'wpseo_titles', $seo_array );
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE
@@ -7951,7 +7942,9 @@ function wireframe22(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);	
+	$privacy_id = wp_insert_post ($privacy_page);	//create the privacy page and assign its id to the $privacy_id variable
+	$privacy_nav_id = $privacy_id +1;
+	wp_delete_post( $privacy_nav_id ); // remove privacy page from navigation
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');

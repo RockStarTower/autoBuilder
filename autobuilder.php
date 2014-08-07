@@ -3,7 +3,7 @@
  * Plugin Name: Auto Builder
  * Description: Auto upload content to wordpress.
  * Version: 1.0
- * Author: Johnny & Joseph
+ * Author: Johnny & Joseph & Sam
  * Author URI: codesandhose.com
  * Plugin URI: codesandhose.com
  */

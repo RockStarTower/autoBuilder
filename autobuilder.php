@@ -3,9 +3,9 @@
  * Plugin Name: Auto Builder
  * Description: Auto upload content to wordpress.
  * Version: 1.0
- * Author: Johnny & Joseph & Sam
- * Author URI: boost-connect.net
- * Plugin URI: boost-connect.net
+ * Author: Johnny & Joseph
+ * Author URI: codesandhose.com
+ * Plugin URI: codesandhose.com
  */
  
 define('AUTO_BUILDER_DIR', plugin_dir_path(__FILE__));
@@ -1213,14 +1213,17 @@ function wireframe3(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
+  
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+   	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 

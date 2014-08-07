@@ -4,8 +4,8 @@
  * Description: Auto upload content to wordpress.
  * Version: 1.0
  * Author: Johnny & Joseph & Sam
- * Author URI: codesandhose.com
- * Plugin URI: codesandhose.com
+ * Author URI: boost-connect.net
+ * Plugin URI: boost-connect.net
  */
  
 define('AUTO_BUILDER_DIR', plugin_dir_path(__FILE__));

@@ -5670,7 +5670,7 @@ function wireframe16(){
 
 
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	update_option('frontpage_metadesc', $meta_description);
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE

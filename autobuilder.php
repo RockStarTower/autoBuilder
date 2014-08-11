@@ -1553,7 +1553,7 @@ function wireframe4(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
@@ -1561,6 +1561,9 @@ function wireframe4(){
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+   	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 
@@ -1730,7 +1733,7 @@ function wireframe5(){
 				'post_content' => stripslashes($home_content),
 				'post_author' => 1,
 				'post_parent' => '',
-				'page_template' => 'page-full.php'
+				'page_template' => 'template-fullwidth.php'
 			),
 			'nav' => array(
 				'post_type'   => 'nav_menu_item',
@@ -1890,14 +1893,17 @@ function wireframe5(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
+  
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+   	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 
@@ -2227,14 +2233,17 @@ function wireframe6(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
+  
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+   	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 
@@ -2286,8 +2295,9 @@ function wireframe7(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
+
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -2655,14 +2665,17 @@ function wireframe7(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
+  
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+   	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 
@@ -2711,8 +2724,8 @@ function wireframe8(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -2832,7 +2845,7 @@ function wireframe8(){
 				'post_content' => stripslashes($home_content),
 				'post_author' => 1,
 				'post_parent' => '',
-				'page_template' => 'page-full.php'
+				'page_template' => 'template-fullwidth.php'
 			),
 			'nav' => array(
 				'post_type'   => 'nav_menu_item',
@@ -2992,14 +3005,17 @@ function wireframe8(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
 
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
+  
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+   	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 
@@ -3048,8 +3064,8 @@ function wireframe9(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -3170,7 +3186,7 @@ function wireframe9(){
 				'post_content' => stripslashes($home_content),
 				'post_author' => 1,
 				'post_parent' => '',
-				'page_template' => 'page-full.php'
+				'page_template' => 'template-fullwidth.php'
 			),
 			'nav' => array(
 				'post_type'   => 'nav_menu_item',
@@ -3330,14 +3346,14 @@ function wireframe9(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);
 
-	$privacy_obj = get_post($privacy_id);
-    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 
@@ -3386,8 +3402,8 @@ function wireframe10(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -3507,7 +3523,7 @@ function wireframe10(){
 				'post_content' => stripslashes($home_content),
 				'post_author' => 1,
 				'post_parent' => '',
-				'page_template' => 'page-full.php'
+				'page_template' => 'template-fullwidth.php'
 			),
 			'nav' => array(
 				'post_type'   => 'nav_menu_item',
@@ -3667,14 +3683,14 @@ function wireframe10(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);	
+	$privacy_id = wp_insert_post ($privacy_page);
 
-	$privacy_obj = get_post($privacy_id);
-    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
    	if (!add_option('privacy_url', $privacy_url)) {
       	 update_option('privacy_url', $privacy_url);
    	}
+
+	$privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id ); 
 
 }
 

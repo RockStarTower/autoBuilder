@@ -6072,7 +6072,7 @@ function wireframe18(){
 	// LOGO
 	$logo = base64_decode($main_data['logo']);
     
-    // HOMEPAGE BG
+    // HOMEPAGE TITLE IMAGE
 	$homepage_image = base64_decode($main_data['content']['homepage']['background']);
 	
 	// SLIDE IMAGES
@@ -6196,26 +6196,6 @@ function wireframe18(){
 	*/
 
 	$wp_insert = array(	
-		'home_page' => array(
-			'page' => array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($home_content),
-				'post_author' => 1,
-				'post_parent' => '',
-				'page_template' => 'page-full.php'
-			),
-			'nav' => array(
-				'post_type'   => 'nav_menu_item',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_author' => 1,
-				'menu_order' => 1
-			),
-		),
 		'about_page' => array(
 			'page' => array(
 				'post_type'   => 'page',
@@ -6374,6 +6354,8 @@ function wireframe18(){
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
 	
+	//update_option('woo_homepage_intro_message_heading', $intro_heading);	// add homepage intro heading
+	
 	update_post_meta(223, '_menu_item_url', home_url()); // Reset the home URL
     
     $privacy_policy = array(
@@ -6428,24 +6410,20 @@ function wireframe18(){
     $about_page_url = site_url('/' . $about_page_obj->post_name . '/');
     
     $hustle_options = array(
-        //Enables intro message in theme settings
-        'woo_homepage_enable_intro_message' => true,
-        //Enables blog posts on home page
-        'woo_homepage_enable_blog_posts' => true,
         //Sets homepage h1
-        'woo_homepage_intro_message_heading' => $main_data['content']['homepage']['content']['homepage_title'],
+        'woo_homepage_intro_message_heading' => $main_data['content']['homepage']['intro_message_label'],
         //Sets content under h1
-        'woo_homepage_intro_message_content' => $main_data['content']['homepage']['content']['intro_message_content'],
-        //Sets link button text
-        'woo_homepage_intro_message_button_label' => $main_data['content']['homepage']['content']['intro_message_button_label'],
+        'woo_homepage_intro_message_content' => $main_data['content']['homepage']['intro_message_content'],
         //Button links to about page
         'woo_homepage_intro_message_button_url' => $about_page_url,
         //Sets top image on homepage
         'woo_homepage_intro_message_bg' => $upload_dir['url'] . '/background.jpg',
         
-        //BLOG AREA TITLE DOESN'T WORK YET
+        //BLOG AREA TITLE AND BUTTON TEXT DON'T WORK YET
         //Sets title over blog posts on the homepage
         //'woo_homepage_blog_area_title' => $main_data['content']['homepage']['blog_area_title'],
+		//Sets link button text
+        //'woo_homepage_intro_message_button_label' => $main_data['content']['homepage']['content']['intro_message_button_label'],
         
     );
     
@@ -6457,7 +6435,7 @@ function wireframe18(){
             update_option($key, $val);
         } 
         else {
-            echo $key . " wasn't updated. <br>";
+           echo $key . " wasn't updated. <br>";
         }
         $woo_options[$key] = $val;
     }

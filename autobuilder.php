@@ -5416,7 +5416,7 @@ function wireframe16(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -5586,6 +5586,7 @@ function wireframe16(){
 	wp_insert_attachment( $favicon_maker, $filename, '0' );
 	echo "Favicon image set in settings. <br>";
 	
+	
 	// INSERT PAGES
 	$page_ids = array();
 	foreach( $wp_insert as $page => $type ) {
@@ -5596,6 +5597,30 @@ function wireframe16(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
+	update_post_meta(215, '_menu_item_url', home_url()); // Reset the home URL
+	
+	// Content & Privacy page
+	$privacy_page = array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
+				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($main_data['content']['privacy']['content']),
+				'post_author' => 1,
+				'post_parent' => ''
+				);
+	$privacy_id = wp_insert_post ($privacy_page);	// Insert Privacy page and returns page id
+	
+	$privacy_nav_id = $privacy_id + 1;
+	wp_delete_post( $privacy_nav_id ); // remove privacy page from navigation
+	
+	$privacy_obj = get_post($privacy_id);	// Turn privacy page into an object
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/'); // Create link url for Privacy page
+	
+   	if (!add_option('privacy_url', $privacy_url)) {
+      	 update_option('privacy_url', $privacy_url);
+   	}	// Add url of Privacy page to the options table
+	
 	
 	// CREATE SLIDES
 
@@ -5661,7 +5686,7 @@ function wireframe16(){
 
 
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	update_option('frontpage_metadesc', $meta_description);
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE
@@ -5671,30 +5696,12 @@ function wireframe16(){
 	// UPDATE HOMEPAGE H1
 	update_option('magnificent_quote', $homepage_title);
 	echo "H1 was created.<br>";
+
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
-	// CONTENT & PRIVACY PAGE
-
-	$privacy_page = array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
-				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($main_data['content']['privacy']['content']),
-				'post_author' => 1,
-				'post_parent' => ''
-				);
-
-	wp_insert_post ($privacy_page);
-
-	$privacy_obj = get_post($privacy_id);
-    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
 
 }
+
 
 function wireframe17(){
 

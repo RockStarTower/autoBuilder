@@ -6058,8 +6058,8 @@ function wireframe18(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -6373,6 +6373,8 @@ function wireframe18(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
+	
+	update_post_meta(223, '_menu_item_url', home_url()); // Reset the home URL
     
     $privacy_policy = array(
         'post_type'   => 'page',
@@ -6384,15 +6386,15 @@ function wireframe18(){
         'post_parent' => ''
     );
     
-    $page_ids['privacy']['page'] = wp_insert_post($privacy_policy);
-    
-    $privacy_obj = get_post($page_ids['privacy']['page']);
-    
+    $privacy_id = wp_insert_post ($privacy_policy);	 // insert privacy page and assign its post id to a variable
+
+	$privacy_nav_id = $privacy_id + 1;
+	wp_delete_post( $privacy_nav_id );	// remove privacy page from navigation
+	
+	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-    
-    if (!add_option('privacy_url', $privacy_url)) {
-        update_option('privacy_url', $privacy_url);
-    }
+	update_option('privacy_url', $privacy_url);	// create url for privacy page
+	
     
 	/*
 	//ATTACH IMAGES TO FEATURES

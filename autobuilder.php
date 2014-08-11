@@ -6547,14 +6547,16 @@ function wireframe18(){
         //add_post_meta($feature_attachment_id, '_wp_attachment_image_alt', $main_data['alttext']['icons'][$i], true);
 
 	}
-    
+
+	
 	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	update_option('frontpage_metadesc', $meta_description);
 	echo "Updated meta description. <br>";
 	
 	// SITE TITLE
-	update_option("blogname", $title_tag);
+	update_option('frontpage_title', $title_tag);
 	echo "Updated site title. <br>";
+	
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 

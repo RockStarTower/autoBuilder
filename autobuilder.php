@@ -6109,12 +6109,12 @@ function wireframe18(){
 	echo "Logo uploaded. <br>";
 	file_put_contents($upload_dir['path'].'/favicon.ico', $favicon);
 	echo "Favicon uploaded.  <br>";
-	file_put_contents($upload_dir['path'].'/slider1.jpg', $slider1);
+	/*file_put_contents($upload_dir['path'].'/slider1.jpg', $slider1);
 	echo "slider1 uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/slider2.jpg', $slider2);
 	echo "slider2 uploaded.  <br>";
 	file_put_contents($upload_dir['path'].'/slider3.jpg', $slider3);
-	echo "slider3 uploaded.  <br>";
+	echo "slider3 uploaded.  <br>";*/
 	file_put_contents($upload_dir['path'].'/background.jpg', $homepage_image);
 	echo "background image uploaded.  <br>";
 	file_put_contents($wp_upload_dir['path'].'/icon1.png', $icon1);
@@ -6130,11 +6130,20 @@ function wireframe18(){
 	
 	$image_count = sizeof($main_data['content']['homepage']['images']);
 	
-	for ($i = 0; $i < $image_count; $i++) {
+	// upload slider images
+	for ($i = 0; $i < 3; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/icon' . ($i + 1) . '.png', $image);
-		echo "icon" . ($i+1) . ".png uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/slider' . ($i + 1) . '.jpg', $image);
+		echo "slider" . ($i+1) . ".jpg uploaded. <br>";
+		
+	}
+	// upload icons
+	for ($i = 3; $i < $image_count; $i++) {
+	
+		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
+		file_put_contents($upload_dir['path'].'/icon' . ($i - 2) . '.png', $image);
+		echo "icon" . ($i-2) . ".png uploaded. <br>";
 		
 	}
 	
@@ -6354,8 +6363,6 @@ function wireframe18(){
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
 	
-	//update_option('woo_homepage_intro_message_heading', $intro_heading);	// add homepage intro heading
-	
 	update_post_meta(223, '_menu_item_url', home_url()); // Reset the home URL
     
     $privacy_policy = array(
@@ -6446,7 +6453,7 @@ function wireframe18(){
     for ($i = 1; $i < 4; $i++) {
 
         //  Pulls page info from database for the page that the slide is linking too.
-        $page_obj = get_post($page_ids['page' . $i]);
+        $page_obj = get_post($page_ids['page' . $i]['page']);
 
         //  Creates url to the page that the slide is linking too
         $page_url = site_url('/' . $page_obj->post_name . '/');

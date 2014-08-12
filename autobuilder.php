@@ -8744,8 +8744,8 @@ function wireframe24(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -8864,7 +8864,7 @@ function wireframe24(){
 				'post_content' => stripslashes($home_content),
 				'post_author' => 1,
 				'post_parent' => '',
-				'page_template' => 'page-full.php'
+				'page_template' => 'template-fullwidth.php'
 			),
 			'nav' => array(
 				'post_type'   => 'nav_menu_item',
@@ -8995,25 +8995,17 @@ function wireframe24(){
 		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
 		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
 		echo $type['page']['post_title'] . ' was created. <br>';
-		echo $type['page']['nav'] . ' menu item updated. <br>';
+		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
+	
 	
 	// SET HOME PAGE
 	update_option('page_on_front', $page_ids['home_page']['page']);
 	update_option('show_on_front', 'page');
 	echo "Home page set as default <br>";
 	
-	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
-	echo "Updated meta description. <br>";
 	
-	// SITE TITLE
-	update_option("blogname", $title_tag);
-	echo "Updated site title. <br>";
-	
-	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 	// CONTENT & PRIVACY PAGE
-
 	$privacy_page = array(
 				'post_type'   => 'page',
 				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
@@ -9024,14 +9016,26 @@ function wireframe24(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);	 // insert privacy page and assign its post id to a variable
 
+	$privacy_nav_id = $privacy_id + 1;
+	wp_delete_post( $privacy_nav_id );	// remove privacy page from navigation
+	
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
+	update_option('privacy_url', $privacy_url);	// create url for privacy page
+	
+	
+	// META DESCRIPTION
+	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	echo "Updated meta description. <br>";
+	
+	// SITE TITLE
+	update_option("blogname", $title_tag);
+	echo "Updated site title. <br>";
+	
+	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
+	
 
 }
 

@@ -7231,7 +7231,7 @@ function wireframe20(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -7258,7 +7258,7 @@ function wireframe20(){
 	
 	// IMAGES INSERT
 	$upload_dir = wp_upload_dir();
-
+	$slider_dir = $upload_dir['path'] . '/slider';
 
 	// create slider folder if it doesn't exist
 	if (!file_exists($upload_dir['path'].'/slider')) {
@@ -7268,16 +7268,16 @@ function wireframe20(){
 		}
 	}
 	
-	file_put_contents($upload_dir['path'].'/logo.png', $logo);
+	file_put_contents($upload_dir['path'].'/logo.png', $logo);	// upload logo
 	echo "Logo uploaded. <br>";
-	file_put_contents($upload_dir['path'].'/favicon.ico', $favicon);
-	update_option('woo_custom_favicon', $upload_dir['url'].'/favicon.ico');
+	file_put_contents($upload_dir['path'].'/favicon.ico', $favicon);	// upload favicon
+	update_option('woo_custom_favicon', $upload_dir['url'].'/favicon.ico');	// set favicon
 	echo "Favicon uploaded.  <br>";
-	file_put_contents($upload_dir['path'].'/slider1.jpg', $slider_1);
+	file_put_contents($slider_dir .'/slider1.jpg', $slider_1);	// upload slider1
 	echo "slider 1 uploaded.  <br>";
-	file_put_contents($upload_dir['path'].'/slider2.jpg', $slider_2);
+	file_put_contents($slider_dir .'/slider2.jpg', $slider_2);	// upload slider2
 	echo "slider 2 uploaded.  <br>";
-	file_put_contents($upload_dir['path'].'/slider3.jpg', $slider_3);
+	file_put_contents($slider_dir .'/slider3.jpg', $slider_3);	// upload slider3
 	echo "slider 3 uploaded.  <br>";
 	
 	$image_count = sizeof($main_data['content']['homepage']['images']);
@@ -7344,45 +7344,6 @@ function wireframe20(){
 	echo "Widgetkit created. <br>";
 	
 	$wp_insert = array(	
-		'home_page' => array(
-			'page' => array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($home_content),
-				'post_author' => 1,
-				'post_parent' => '',
-				'page_template' => 'page-full.php'
-			),
-			'nav' => array(
-				'post_type'   => 'nav_menu_item',
-				'post_title'  => stripslashes($home_title),
-				'post_name'   => stripslashes($home_title),
-				'post_status' => 'publish',
-				'post_author' => 1,
-				'menu_order' => 1
-			),
-		),
-		'about_page' => array(
-			'page' => array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($about_title),
-				'post_name'   => stripslashes($about_title),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($about_content),
-				'post_author' => 1,
-				'post_parent' => ''
-			),
-			'nav' => array(
-				'post_type'   => 'nav_menu_item',
-				'post_title'  => stripslashes($about_nav),
-				'post_name'   => stripslashes($about_nav),
-				'post_status' => 'publish',
-				'post_author' => 1,
-				'menu_order' => 2
-			),
-		),
 		'page1' => array(
 			'page' => array(
 				'post_type'   => 'page',
@@ -7439,7 +7400,46 @@ function wireframe20(){
 				'post_author' => 1,
 				'menu_order' => 5
 			),
-		),		
+		),
+		'about_page' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($about_title),
+				'post_name'   => stripslashes($about_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($about_content),
+				'post_author' => 1,
+				'post_parent' => ''
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($about_nav),
+				'post_name'   => stripslashes($about_nav),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 2
+			),
+		),
+		'home_page' => array(
+			'page' => array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($home_content),
+				'post_author' => 1,
+				'post_parent' => '',
+				'page_template' => 'page-full.php'
+			),
+			'nav' => array(
+				'post_type'   => 'nav_menu_item',
+				'post_title'  => stripslashes($home_title),
+				'post_name'   => stripslashes($home_title),
+				'post_status' => 'publish',
+				'post_author' => 1,
+				'menu_order' => 1
+			),
+		),
 		'blog' => array(
 			'page' => array(
 				'post_type'   => 'page',
@@ -7489,14 +7489,63 @@ function wireframe20(){
 	
 	// INSERT PAGES
 	$page_ids = array();
+	$page_titles = array();
 	foreach( $wp_insert as $page => $type ) {
 		$page_ids[$page]['page'] = wp_insert_post($type['page']);
+		$page_titles[] = get_permalink($page_ids[$page]['page']);
 		$type['nav']['ID'] = $page_ids[$page]['page'] + 1;
 		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
 		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
 		echo $type['page']['post_title'] . ' was created. <br>';
-		echo $type['page']['nav'] . ' menu item updated. <br>';
+		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
+	
+	
+	//ADD PAGE LINKS TO SLIDERS
+	$home_obj = get_post($page_ids['home_page']['page']);	// create object of home page
+	$home_post_content = $home_obj -> post_content;	// set home page content equal to a variable
+	
+	// replace hrefs on sliders with page links
+	$link_array = array(
+		'/\'.$page_titles[\'0\'].\'/' => $page_titles[0],
+		'/\'.$page_titles[\'1\'].\'/' => $page_titles[1],
+		'/\'.$page_titles[\'2\'].\'/' => $page_titles[2]
+	);
+	foreach( $link_array as $search => $replace ) {
+		$home_post_content = str_replace( $search, $replace, $home_post_content );
+	};
+	///
+	
+	// update home page post with new content
+	$update_array = array(
+		'ID' => $page_ids['home_page']['page'],
+		'post_content' => $home_post_content
+	);
+	wp_update_post($update_array);
+	///
+	
+	
+	// CONTENT & PRIVACY PAGE
+
+	$privacy_page = array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
+				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($main_data['content']['privacy']['content']),
+				'post_author' => 1,
+				'post_parent' => ''
+				);
+
+	$privacy_id = wp_insert_post ($privacy_page);	 // insert privacy page and assign its post id to a variable
+
+	$privacy_nav_id = $privacy_id + 1;
+	wp_delete_post( $privacy_nav_id );	// remove privacy page from navigation
+	
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+	update_option('privacy_url', $privacy_url);	// create url for privacy page
+	
 	
 	// SET HOME PAGE
 	update_option('page_on_front', $page_ids['home_page']['page']);
@@ -7512,26 +7561,7 @@ function wireframe20(){
 	echo "Updated site title. <br>";
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
-	// CONTENT & PRIVACY PAGE
-
-	$privacy_page = array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
-				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($main_data['content']['privacy']['content']),
-				'post_author' => 1,
-				'post_parent' => ''
-				);
-
-	wp_insert_post ($privacy_page);	
-
-	$privacy_obj = get_post($privacy_id);
-    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
+	
 
 }
 
@@ -8714,8 +8744,8 @@ function wireframe24(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
-	$blog_template = "page-blog.php";
+	$blog_nav = "Blog";
+	$blog_template = "template-blog.php";
 	
 	// FAVICON
 	$favicon = base64_decode($main_data['favicon']);
@@ -8779,7 +8809,7 @@ function wireframe24(){
 		'settings' => array(
 			'style' => 'default',
 			'width' => 'auto',
-			'height' => 350,
+			'height' => 'auto',
 			'autoplay' => 1,
 			'order' => 'default',
 			'interval' => 5000,
@@ -8824,6 +8854,7 @@ function wireframe24(){
 	$home_content = str_replace("ab_slider_id", $wk_id, $home_content);
 	echo "Widgetkit created. <br>";
 	
+	
 	$wp_insert = array(	
 		'home_page' => array(
 			'page' => array(
@@ -8834,7 +8865,7 @@ function wireframe24(){
 				'post_content' => stripslashes($home_content),
 				'post_author' => 1,
 				'post_parent' => '',
-				'page_template' => 'page-full.php'
+				'page_template' => 'template-fullwidth.php'
 			),
 			'nav' => array(
 				'post_type'   => 'nav_menu_item',
@@ -8965,25 +8996,49 @@ function wireframe24(){
 		$page_ids[$page]['nav'] = wp_update_post($type['nav']);
 		update_post_meta($page_ids[$page]['nav'], '_menu_item_object_id', $page_ids[$page]['page']);
 		echo $type['page']['post_title'] . ' was created. <br>';
-		echo $type['page']['nav'] . ' menu item updated. <br>';
+		echo $type['page']['post_title'] . ' menu item updated. <br>';
 	}
+	
 	
 	// SET HOME PAGE
 	update_option('page_on_front', $page_ids['home_page']['page']);
 	update_option('show_on_front', 'page');
 	echo "Home page set as default <br>";
+	///
 	
-	// META DESCRIPTION
-	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
-	echo "Updated meta description. <br>";
 	
-	// SITE TITLE
-	update_option("blogname", $title_tag);
-	echo "Updated site title. <br>";
+	// ADD PAGE LINKS TO SLIDER CALLS TO ACTION
+	$wk_post_obj = get_post($wk_id);
+	$wk_post_content = json_decode($wk_post_obj->post_content, TRUE);	// Get widgetkit post content and decode the json array
 	
-	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
+	// page objects array
+	$page_array = array(
+		'page1' => get_post($page_ids['page1']['page']),
+		'page2' => get_post($page_ids['page2']['page']),
+		'page3' => get_post($page_ids['page3']['page'])
+	);
+	///
+	
+	// Add <h2> and <a> tags to each caption
+	$counter = 1;
+	foreach( $wk_post_content['captions'] as $key => $val ) {
+		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
+		$counter ++;
+	}
+	///
+	
+	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	
+	// update the widgetkit content
+	$update_array = array(
+		'ID' => $wk_id,
+		'post_content' => $wk_post_content
+	);
+	wp_update_post($update_array);
+	///
+	
+	
 	// CONTENT & PRIVACY PAGE
-
 	$privacy_page = array(
 				'post_type'   => 'page',
 				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
@@ -8994,14 +9049,26 @@ function wireframe24(){
 				'post_parent' => ''
 				);
 
-	wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);	 // insert privacy page and assign its post id to a variable
 
+	$privacy_nav_id = $privacy_id + 1;
+	wp_delete_post( $privacy_nav_id );	// remove privacy page from navigation
+	
 	$privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
+	update_option('privacy_url', $privacy_url);	// create url for privacy page
+	
+	
+	// META DESCRIPTION
+	update_post_meta($page_ids['home_page']['page'], '_yoast_wpseo_metadesc', $meta_description);
+	echo "Updated meta description. <br>";
+	
+	// SITE TITLE
+	update_option("blogname", $title_tag);
+	echo "Updated site title. <br>";
+	
+	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
+	
 
 }
 
@@ -9027,7 +9094,7 @@ function wireframe25(){
 	
 	// HOME
 	$home_title = 'Home';
-	$homepage_title = '<h1>' .  ($main_data['content']['homepage']['content'][0]) . '</h1>';
+	$homepage_title = ($main_data['content']['homepage']['content'][0]);
 	$home_content = ($main_data['content']['homepage']['content']);
 
 	// ABOUT
@@ -9054,7 +9121,7 @@ function wireframe25(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -9221,11 +9288,15 @@ function wireframe25(){
 				'post_parent' => ''
 				);
 
-	//DELETING
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);	 // insert privacy page and assign its post id to a variable
 
 	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+	wp_delete_post( $privacy_nav_id );	// remove privacy page from navigation
+	
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+	update_option('privacy_url', $privacy_url);	// create url for privacy page
+	
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -9287,9 +9358,10 @@ function wireframe25(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
+	update_post_meta(186, '_menu_item_url', home_url()); // Reset the home URL
+	
 	
 	// CREATE SLIDES
-
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );
 	$slide_pages = array();
 	for ($i = 0; $i < 3; $i++) {
@@ -9364,9 +9436,9 @@ function wireframe25(){
   	//Append a new array item to the sidebar
 	$sidebars_widgets['h1'][] = 'text-100';
 	//Append a new text widget title
-	$text_widgets[100]['title'] = '';
+	$text_widgets[100]['title'] = $homepage_title;
 	//Append a new text widget text
-	$text_widgets[100]['text'] = $homepage_title;
+	$text_widgets[100]['text'] = '';
 
  	//Update the widget_text option. The array is serialized automatically in the update_option function
   	update_option('widget_text', $text_widgets);
@@ -9386,13 +9458,7 @@ function wireframe25(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
-	$privacy_obj = get_post($privacy_id);
-    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-   	//DELETING PRIVACY NAV ITEM
+	
    	
 }
 
@@ -9493,8 +9559,8 @@ function wireframe26(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpg', $image);
-		echo "image" . ($i+1) . ".jpg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.png', $image);
+		echo "image" . ($i+1) . ".png uploaded. <br>";
 		
 	}
 	
@@ -9695,6 +9761,55 @@ function wireframe26(){
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
 	
+	
+	// ADD PAGE LINKS TO SLIDER CALLS TO ACTION
+	$wk_post_obj = get_post($wk_id);
+	$wk_post_content = json_decode($wk_post_obj->post_content, TRUE);	// Get widgetkit post content and decode the json array
+	// page objects array
+	$page_array = array(
+		'page1' => get_post($page_ids['page1']['page']),
+		'page2' => get_post($page_ids['page2']['page']),
+		'page3' => get_post($page_ids['page3']['page'])
+	);
+	///
+	// Add <h2> and <a> tags to each caption
+	$counter = 1;
+	foreach( $wk_post_content['captions'] as $key => $val ) {
+		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
+		$counter ++;
+	}
+	///
+	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	// update the widgetkit content
+	$update_array = array(
+		'ID' => $wk_id,
+		'post_content' => $wk_post_content
+	);
+	wp_update_post($update_array);
+	///
+	
+	
+	// CONTENT & PRIVACY PAGE
+	$privacy_page = array(
+				'post_type'   => 'page',
+				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
+				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
+				'post_status' => 'publish',
+				'post_content' => stripslashes($main_data['content']['privacy']['content']),
+				'post_author' => 1,
+				'post_parent' => ''
+				);
+
+	$privacy_id = wp_insert_post ($privacy_page);	 // insert privacy page and assign its post id to a variable
+
+	$privacy_nav_id = $privacy_id + 1;
+	wp_delete_post( $privacy_nav_id );	// remove privacy page from navigation
+	
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+	update_option('privacy_url', $privacy_url);	// create url for privacy page
+	
+	
 	// SET HOME PAGE
 	update_option('page_on_front', $page_ids['home_page']['page']);
 	update_option('show_on_front', 'page');
@@ -9709,26 +9824,7 @@ function wireframe26(){
 	echo "Updated site title. <br>";
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
-	// CONTENT & PRIVACY PAGE
-
-	$privacy_page = array(
-				'post_type'   => 'page',
-				'post_title'  => stripslashes($main_data['content']['privacy']['title']),
-				'post_name'   => stripslashes($main_data['content']['privacy']['title']),
-				'post_status' => 'publish',
-				'post_content' => stripslashes($main_data['content']['privacy']['content']),
-				'post_author' => 1,
-				'post_parent' => ''
-				);
-
-	wp_insert_post ($privacy_page);	
-
-	$privacy_obj = get_post($privacy_id);
-    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
+	
 
 }
 

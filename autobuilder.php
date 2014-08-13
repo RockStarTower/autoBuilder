@@ -8809,7 +8809,7 @@ function wireframe24(){
 		'settings' => array(
 			'style' => 'default',
 			'width' => 'auto',
-			'height' => 350,
+			'height' => 'auto',
 			'autoplay' => 1,
 			'order' => 'default',
 			'interval' => 5000,
@@ -8853,6 +8853,7 @@ function wireframe24(){
 	$wk_id = wp_insert_post($create_widgetkit);
 	$home_content = str_replace("ab_slider_id", $wk_id, $home_content);
 	echo "Widgetkit created. <br>";
+	
 	
 	$wp_insert = array(	
 		'home_page' => array(
@@ -9003,6 +9004,38 @@ function wireframe24(){
 	update_option('page_on_front', $page_ids['home_page']['page']);
 	update_option('show_on_front', 'page');
 	echo "Home page set as default <br>";
+	///
+	
+	
+	// ADD PAGE LINKS TO SLIDER CALLS TO ACTION
+	$wk_post_obj = get_post($wk_id);
+	$wk_post_content = json_decode($wk_post_obj->post_content, TRUE);	// Get widgetkit post content and decode the json array
+	
+	// page objects array
+	$page_array = array(
+		'page1' => get_post($page_ids['page1']['page']),
+		'page2' => get_post($page_ids['page2']['page']),
+		'page3' => get_post($page_ids['page3']['page'])
+	);
+	///
+	
+	// Add <h2> and <a> tags to each caption
+	$counter = 1;
+	foreach( $wk_post_content['captions'] as $key => $val ) {
+		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
+		$counter ++;
+	}
+	///
+	
+	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	
+	// update the widgetkit content
+	$update_array = array(
+		'ID' => $wk_id,
+		'post_content' => $wk_post_content
+	);
+	wp_update_post($update_array);
+	///
 	
 	
 	// CONTENT & PRIVACY PAGE

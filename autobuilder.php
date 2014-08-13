@@ -9094,7 +9094,7 @@ function wireframe25(){
 	
 	// HOME
 	$home_title = 'Home';
-	$homepage_title = '<h1>' .  ($main_data['content']['homepage']['content'][0]) . '</h1>';
+	$homepage_title = ($main_data['content']['homepage']['content'][0]);
 	$home_content = ($main_data['content']['homepage']['content']);
 
 	// ABOUT
@@ -9121,7 +9121,7 @@ function wireframe25(){
 	$blog_nav = ($main_data['content']['blog']['nav']);
 	$blog_template = ($main_data['content']['blog']['template']);
 	
-	$blog_nav = "blog";
+	$blog_nav = "Blog";
 	$blog_template = "page-blog.php";
 	
 	// FAVICON
@@ -9288,11 +9288,15 @@ function wireframe25(){
 				'post_parent' => ''
 				);
 
-	//DELETING
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);	 // insert privacy page and assign its post id to a variable
 
 	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+	wp_delete_post( $privacy_nav_id );	// remove privacy page from navigation
+	
+	$privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+	update_option('privacy_url', $privacy_url);	// create url for privacy page
+	
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -9354,9 +9358,10 @@ function wireframe25(){
 		echo $type['page']['post_title'] . ' was created. <br>';
 		echo $type['page']['nav'] . ' menu item updated. <br>';
 	}
+	update_post_meta(186, '_menu_item_url', home_url()); // Reset the home URL
+	
 	
 	// CREATE SLIDES
-
 	require_once( ABSPATH . 'wp-admin/includes/image.php' );
 	$slide_pages = array();
 	for ($i = 0; $i < 3; $i++) {
@@ -9431,9 +9436,9 @@ function wireframe25(){
   	//Append a new array item to the sidebar
 	$sidebars_widgets['h1'][] = 'text-100';
 	//Append a new text widget title
-	$text_widgets[100]['title'] = '';
+	$text_widgets[100]['title'] = $homepage_title;
 	//Append a new text widget text
-	$text_widgets[100]['text'] = $homepage_title;
+	$text_widgets[100]['text'] = '';
 
  	//Update the widget_text option. The array is serialized automatically in the update_option function
   	update_option('widget_text', $text_widgets);
@@ -9453,13 +9458,7 @@ function wireframe25(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
-	$privacy_obj = get_post($privacy_id);
-    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-   	//DELETING PRIVACY NAV ITEM
+	
    	
 }
 

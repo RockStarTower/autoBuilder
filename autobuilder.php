@@ -551,15 +551,14 @@ function wireframe1(){
 				'post_parent' => ''
 				);
   
-   	//DELETE PRIVACY NAV
-   	$privacy_id = wp_insert_post ($privacy_page);
+   	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -912,14 +911,14 @@ function wireframe2(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -1280,17 +1279,14 @@ function wireframe3(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	$privacy_obj = get_post($privacy_id);
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-  
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-   	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -1642,17 +1638,14 @@ function wireframe4(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	$privacy_obj = get_post($privacy_id);
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-   	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    update_option('privacy_url', $privacy_url);    // create url for privacy page 
 
 }
 
@@ -2004,17 +1997,14 @@ function wireframe5(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	$privacy_obj = get_post($privacy_id);
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-  
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-   	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -2366,17 +2356,14 @@ function wireframe6(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	$privacy_obj = get_post($privacy_id);
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-  
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-   	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -2798,17 +2785,14 @@ function wireframe7(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	$privacy_obj = get_post($privacy_id);
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-  
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-   	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -3160,17 +3144,14 @@ function wireframe8(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	$privacy_obj = get_post($privacy_id);
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-  
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-   	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    update_option('privacy_url', $privacy_url);    // create url for privacy page 
 
 }
 
@@ -3523,14 +3504,14 @@ function wireframe9(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page 
 
 }
 
@@ -3882,14 +3863,14 @@ function wireframe10(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -4241,14 +4222,14 @@ function wireframe11(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -4615,14 +4596,14 @@ function wireframe12(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 	
@@ -4925,14 +4906,14 @@ function wireframe13(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page 
 
 }	
 
@@ -5285,14 +5266,14 @@ function wireframe14(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -5644,14 +5625,14 @@ function wireframe15(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -7183,7 +7164,6 @@ function wireframe19(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 	
-
 }	
 
 function wireframe20(){
@@ -7562,7 +7542,6 @@ function wireframe20(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 	
-
 }
 
 function wireframe21(){
@@ -7810,17 +7789,14 @@ function wireframe21(){
         'post_parent' => ''
     );
 
-	$privacy_id = wp_insert_post ($privacy_page);
-	$privacy_nav_id = $privacy_id + 1;
-	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
+
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
     
     $privacy_obj = get_post($privacy_id);
-    
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-    
-    if (!add_option('privacy_url', $privacy_url)) {
-        update_option('privacy_url', $privacy_url);
-    }
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 	
     
     //Get about page post id
@@ -8297,16 +8273,14 @@ function wireframe22(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);	//create the privacy page and assign its id to the $privacy_id variable
-	$privacy_nav_id = $privacy_id +1;
-	wp_delete_post( $privacy_nav_id ); // remove privacy page from navigation
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-	$privacy_obj = get_post($privacy_id);
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -9069,7 +9043,6 @@ function wireframe24(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 	
-
 }
 
 function wireframe25(){
@@ -9458,8 +9431,6 @@ function wireframe25(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 
-	
-   	
 }
 
 function wireframe26(){
@@ -9825,7 +9796,6 @@ function wireframe26(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 	
-
 }
 
 function wireframe27(){
@@ -10187,14 +10157,14 @@ function wireframe27(){
         'post_parent' => ''
     );
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 
@@ -10550,12 +10520,14 @@ function wireframe28(){
 	
 	echo "<div style='margin-top: 10px; margin-left: 0px; margin-bottom: 40px; color: green; font-size: 18px; font-weight: bold;'>Auto build completed!</div>";
 	
-	$privacy_obj = get_post($privacy_id);
+	 $privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
+
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-   
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 }
 
 function wireframe29(){
@@ -10779,17 +10751,14 @@ function wireframe29(){
 				'post_parent' => ''
 				);
 
-	$privacy_id = wp_insert_post ($privacy_page);
-	$privacy_nav_id = $privacy_id + 1;
-	wp_delete_post( $privacy_nav_id ); // removes privacy page from navigation
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
+
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
     
     $privacy_obj = get_post($privacy_id);
-    
     $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
-    
-    if (!add_option('privacy_url', $privacy_url)) {
-        update_option('privacy_url', $privacy_url);
-    }
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 	//INSERT HOMEPAGE FEATURES
 	$features_array = array(
@@ -11306,14 +11275,14 @@ function wireframe30(){
         'post_parent' => ''
     );
 
-	$privacy_id = wp_insert_post ($privacy_page);
+	$privacy_id = wp_insert_post ($privacy_page);     // insert privacy page and assign its post id to a variable
 
-   	if (!add_option('privacy_url', $privacy_url)) {
-      	 update_option('privacy_url', $privacy_url);
-   	}
-
-	$privacy_nav_id = $privacy_id + 1;
-    wp_delete_post( $privacy_nav_id ); 
+    $privacy_nav_id = $privacy_id + 1;
+    wp_delete_post( $privacy_nav_id );    // remove privacy page from navigation
+    
+    $privacy_obj = get_post($privacy_id);
+    $privacy_url = site_url('/' . $privacy_obj->post_name . '/');
+    update_option('privacy_url', $privacy_url);    // create url for privacy page
 
 }
 ?>

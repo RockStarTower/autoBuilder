@@ -512,7 +512,7 @@ function wireframe1(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -878,7 +878,7 @@ function wireframe2(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -1241,7 +1241,7 @@ function wireframe3(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -1605,7 +1605,7 @@ function wireframe4(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -1964,7 +1964,7 @@ function wireframe5(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -2323,7 +2323,7 @@ function wireframe6(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -3111,7 +3111,7 @@ function wireframe8(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -3471,7 +3471,7 @@ function wireframe9(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -3830,7 +3830,7 @@ function wireframe10(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -4189,7 +4189,7 @@ function wireframe11(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -4563,7 +4563,7 @@ function wireframe12(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -5233,7 +5233,7 @@ function wireframe14(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -5592,7 +5592,7 @@ function wireframe15(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -8215,7 +8215,7 @@ function wireframe22(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -9001,7 +9001,7 @@ function wireframe24(){
 	}
 	///
 	
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	
 	// update the widgetkit content
 	$update_array = array(
@@ -9750,7 +9750,7 @@ function wireframe26(){
 		$counter ++;
 	}
 	///
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	// update the widgetkit content
 	$update_array = array(
 		'ID' => $wk_id,
@@ -10124,7 +10124,7 @@ function wireframe27(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -10498,7 +10498,7 @@ function wireframe28(){
 		$counter ++;
 	}
 
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content
@@ -11241,7 +11241,7 @@ function wireframe30(){
 		$wk_post_content['captions'][$key] = '<h2><a href=\"' . home_url() . '\/' . $page_array['page'.$counter]->post_name . '\/\">' . stripslashes(${'caption'.$counter}) . '<\/a><\/h2>';
 		$counter ++;
 	}
-	$wk_post_content = json_encode($wk_post_content);	// Re-encode to json array
+	$wk_post_content = json_encode($wk_post_content, JSON_UNESCAPED_UNICODE);	// Re-encode to json array
 	$update_array = array(
 		'ID' => $wk_id,
 		'post_content' => $wk_post_content

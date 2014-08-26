@@ -11024,8 +11024,8 @@ function wireframe30(){
 	for ($i = 0; $i < $image_count; $i++) {
 	
 		$image = base64_decode($main_data['content']['homepage']['images'][$i]);
-		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.jpeg', $image);
-		echo "image" . ($i+1) . ".jpeg uploaded. <br>";
+		file_put_contents($upload_dir['path'].'/image' . ($i + 1) . '.png', $image);
+		echo "image" . ($i+1) . ".png uploaded. <br>";
 		
 	}
 	

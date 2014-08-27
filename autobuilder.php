@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Auto Builder
  * Description: Auto upload content to wordpress.
- * Version: 1.02
+ * Version: 1.04
  * Author: Joseph & Johnny & Sam
  * Author URI: boost-connect.net
  * Plugin URI: boost-connect.net

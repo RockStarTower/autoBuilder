@@ -334,7 +334,7 @@ function wireframe1(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -703,7 +703,7 @@ function wireframe2(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -1066,7 +1066,7 @@ function wireframe3(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -1430,7 +1430,7 @@ function wireframe4(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -1789,7 +1789,7 @@ function wireframe5(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -2148,7 +2148,7 @@ function wireframe6(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -2513,7 +2513,7 @@ function wireframe7(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -2936,7 +2936,7 @@ function wireframe8(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -3296,7 +3296,7 @@ function wireframe9(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -3655,7 +3655,7 @@ function wireframe10(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -4014,7 +4014,7 @@ function wireframe11(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -4374,7 +4374,7 @@ function wireframe12(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -5058,7 +5058,7 @@ function wireframe14(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -5417,7 +5417,7 @@ function wireframe15(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -6454,7 +6454,7 @@ function wireframe18(){
 	);
 	
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -7307,7 +7307,7 @@ function wireframe20(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -8020,7 +8020,7 @@ function wireframe22(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -8812,7 +8812,7 @@ function wireframe24(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -9572,7 +9572,7 @@ function wireframe26(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -9938,7 +9938,7 @@ function wireframe27(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -10309,7 +10309,7 @@ function wireframe28(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
@@ -11066,7 +11066,7 @@ function wireframe30(){
 		),
 	);
 	
-	$wk_content = json_encode($widgetkit_settings);
+	$wk_content = json_encode($widgetkit_settings, JSON_UNESCAPED_UNICODE);
 	
 	$create_widgetkit = array(
 	    'post_title'     => 'slider',
